@@ -26,5 +26,18 @@ namespace ExcellProtecaoVeicular.Controllers
         {
             return View();
         }
+        public ActionResult Beneficios()
+        {
+            return View();
+        }
+        public ActionResult Regulamento()
+        {
+            return View();
+        }
+        public ActionResult Contato()
+        {
+            return View();
+        }
+        
     }
 }

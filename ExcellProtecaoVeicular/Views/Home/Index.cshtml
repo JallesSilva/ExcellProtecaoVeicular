@@ -4,12 +4,10 @@
 }
 
 @{
-    Html.RenderPartial("_HeaderLayout");
- }
-
-@{
+    //Html.RenderPartial("_HeaderLayout");
     Html.RenderPartial("_HeaderNavBarMenu");
  }
+
 <!-- Carousel -->
 <div id="carousel-example-generic" class="carousel slide " data-ride="carousel" style="margin-top: 26px;">
     <!-- Indicators -->
@@ -54,4 +52,8 @@
 </div><!-- /Carousel -->
 @{
     Html.RenderPartial("Associacao");
+    Html.RenderPartial("Beneficios");
+    Html.RenderPartial("Regulamento");
+    Html.RenderPartial("Contato");
  }
+

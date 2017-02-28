@@ -137,6 +137,19 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\24horas.png" />
+    <Content Include="images\bg-map.png" />
+    <Content Include="images\carro.jpg" />
+    <Content Include="images\carroReserva.png" />
+    <Content Include="images\Excell_Logo.png" />
+    <Content Include="images\familia.jpg" />
+    <Content Include="images\familia_carousel.png" />
+    <Content Include="images\Logo.ico" />
+    <Content Include="images\moto.png" />
+    <Content Include="images\protecaoVeicular.png" />
+    <Content Include="images\pw_maze_black_2X.png" />
+    <Content Include="images\rastreamento.png" />
+    <Content Include="images\section-bg1.jpg" />
     <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -178,6 +191,10 @@
     <Content Include="Views\Shared\_ScriptsFooter.cshtml" />
     <Content Include="Views\Home\_HeaderNavBarMenu.cshtml" />
     <Content Include="Views\Home\Associacao.cshtml" />
+    <Content Include="Views\Home\Beneficios.cshtml" />
+    <Content Include="Views\Home\Regulamento.cshtml" />
+    <Content Include="Views\Home\Contato.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
