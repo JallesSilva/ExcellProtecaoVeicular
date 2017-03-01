@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ExcellProtecaoVeicular.Models;
+using System.Net.Mail;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace ExcellProtecaoVeicular.Controllers
 {
@@ -44,30 +43,27 @@ namespace ExcellProtecaoVeicular.Controllers
         }
 
         [HttpPost]
-        public ViewResult Contato(_Email _objEmail)
+        public async Task<ActionResult> Contato(_Email _objEmail)
         {
             if(ModelState.IsValid)
             {
-                MailMessage mail = new MailMessage();
-                mail.To.Add("brendon.genssinger@gmail.com");
-                mail.From = new MailAddress(_objEmail.Email);
-                mail.Subject = _objEmail.Nome;
-                mail.Body = @"<p>Testando E-amil<\p>";
-                mail.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential("brendon.genssinger@gmail.com", "1311261425");
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-                return View("Index", _objEmail);
+                var body = "<p>Message: Testando</p>";
+                var mail = new MailMessage();                
+                mail.To.Add("excell - contabil@excellprotecaoveicular.com.br"); // para quem vai o e-mail
+                mail.From = new MailAddress("no-replay@excellprotecaoveicular.com.br"); // De onde vem o e-mail
+                mail.Subject = "Site - Excell Proteção Veicular"; // Titulo do E-mail
+                mail.Body = body; // Corpo da mensagem
+                mail.IsBodyHtml = true; // Transformando a mensagem em html
+                var smtp = new SmtpClient();
+                smtp.Host = "mail.excellprotecaoveicular.com.br";
+                //smtp.Port = 587;
+                //smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("excell-contabil@excellprotecaoveicular.com.br", "131126Japa@");
+                smtp.EnableSsl = false;
+                await smtp.SendMailAsync(mail);
+                return RedirectToAction("Index");
             }
-            else
-            {
-                return View();
-            }
-        }
-        
+            return View(_objEmail);
+          }
     }
 }
