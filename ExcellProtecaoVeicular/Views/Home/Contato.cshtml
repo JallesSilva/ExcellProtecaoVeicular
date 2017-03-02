@@ -43,13 +43,13 @@
                 @using (Html.BeginForm("Contato", "Home", FormMethod.Post))
                 {
                     @Html.ValidationSummary()
-                    < p > Nome :</ p >
+                    <p> Nome :</p>
                        @Html.TextBoxFor(m => m.Nome);
-                    < p > Email :</ p >
+                    <p> Email :</p>
                        @Html.TextBoxFor(m => m.Email);
-                    < p > Telefone :</ p >
+                    <p> Telefone :</p>
                        @Html.TextBoxFor(m => m.Telefone);
-                    < p > Mensagem :</ p >
+                    <p> Mensagem :</p>
                        @Html.TextAreaFor(m => m.Mensagem);
 
                     @*<input class="input-text" type="text" name="" value="Seu Nome *" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
