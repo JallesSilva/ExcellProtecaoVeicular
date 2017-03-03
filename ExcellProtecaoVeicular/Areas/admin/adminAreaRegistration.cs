@@ -17,7 +17,7 @@ namespace ExcellProtecaoVeicular.Areas.admin
             context.MapRoute(
                 "admin_default",
                 "admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller="Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,6 +1,10 @@
-﻿@{ 
-    Layout = null;
-    ViewBag.Title = "Teste";
+﻿
+@{
+    ViewBag.Title = "Index";
 }
 
-<p>Teste</p>
+@using (Html.BeginForm("pagAdministrador", "Login", FormMethod.Post,new{area="admin" }))
+{
+   <input class="input-btn" type="submit" value="Logar">
+}
+

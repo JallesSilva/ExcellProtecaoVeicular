@@ -7,9 +7,7 @@
             <li><a href="#Portfolio">BENEFÍCIOS</a></li>
             <!-- <li class="small-logo"><a href="#header"><img src="img/small-logo.png" alt=""></a></li> -->
             <li><a href="#client">REGULAMENTO</a></li>
-            <li>@{ Html.RouteLink("BOLETO", "admin"); }</li>
-                    
-                    @*("BOLETO", "Index", "Login", new { area = "admin" },null);}*@
+            <li>@Html.ActionLink("BOLETO", "Index", "Login", new { area = "admin" },null);</li>
 
             <li><a href="#contact">CONTATO</a></li>
 
