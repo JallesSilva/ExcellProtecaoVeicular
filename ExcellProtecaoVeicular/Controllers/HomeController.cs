@@ -1,14 +1,15 @@
 ﻿using System.Web.Mvc;
 using ExcellProtecaoVeicular.Models;
 using System.Net.Mail;
-using System.Net;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ExcellProtecaoVeicular.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Home
+        [DisplayName("TestandoInicio")]
         public ActionResult Index()
         {
             return View();
@@ -65,5 +66,7 @@ namespace ExcellProtecaoVeicular.Controllers
             }
             return View(_objEmail);
           }
+
+      
     }
 }

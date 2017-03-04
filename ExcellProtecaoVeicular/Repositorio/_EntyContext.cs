@@ -8,15 +8,13 @@ namespace ExcellProtecaoVeicular.Repositorio
     public class _EntyContext : DbContext
     {
       public DbSet<Usuarios> Usuarios { get; set; }
-      public DbSet<TipoUsuarios> TipoUsuarios { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
         public _EntyContext():base("ExcellProtecaoVeicular")
         {
-            ConfigurationManager.ConnectionStrings["ExcellProtecaoVeicular"].ConnectionString.ToString();
+            
         }
     }
 }

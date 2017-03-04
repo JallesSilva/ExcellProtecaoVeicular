@@ -5,9 +5,9 @@ using System.Web;
 
 namespace ExcellProtecaoVeicular.Models
 {
-    public enum EntidadeTiposUsuarios
+    public enum EnumTipoUsuario
     {
-       cliente,
-       administrador
+       cliente = 'C',
+       administrador = 'A' 
     }
 }

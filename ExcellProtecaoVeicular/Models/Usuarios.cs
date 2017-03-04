@@ -15,6 +15,7 @@ namespace ExcellProtecaoVeicular.Models
         [Required]
         public string password { get; set; }
         [Required]
-        public TipoUsuarios TipoUsuario { get; set; }
+        //[MaxLength(2)]
+        public EnumTipoUsuario TipoUsuario { get; set; }
     }
 }

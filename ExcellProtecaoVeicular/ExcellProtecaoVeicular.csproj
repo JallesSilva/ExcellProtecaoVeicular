@@ -191,13 +191,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
-    <Compile Include="Areas\admin\Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\EnumTipoUsuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\EntidadeTiposUsuarios.cs" />
-    <Compile Include="Models\TipoUsuarios.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Models\_Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,6 +220,8 @@
     <Content Include="Views\Home\Regulamento.cshtml" />
     <Content Include="Views\Home\Contato.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Login\cadastrarUsuarios.cshtml" />
+    <Content Include="Views\Login\listarUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -230,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\admin\Controllers\" />
     <Folder Include="Areas\admin\Models\" />
   </ItemGroup>
   <PropertyGroup>
