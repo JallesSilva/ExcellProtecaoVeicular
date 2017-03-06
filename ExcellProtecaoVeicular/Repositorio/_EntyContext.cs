@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using ExcellProtecaoVeicular.Models;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Configuration;
+
 
 namespace ExcellProtecaoVeicular.Repositorio
 {
@@ -16,5 +16,7 @@ namespace ExcellProtecaoVeicular.Repositorio
         {
             
         }
+
+        
     }
 }

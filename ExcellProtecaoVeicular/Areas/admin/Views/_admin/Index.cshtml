@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    <p>Usuario- @HttpContext.Current.User.Identity.Name</p>
+}
+else
+{
+    <p>Usuario não logado</p>
+}
+

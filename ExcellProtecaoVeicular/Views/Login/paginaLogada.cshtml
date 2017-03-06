@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "paginaLogada";
+}
+
+    @if(HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        <p>Autenticado - @HttpContext.Current.User.Identity.Name</p>
+    }
+    else
+    {
+        <p>Usuario não logado</p>
+    }
+
+
+

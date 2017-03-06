@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ExcellProtecaoVeicular.Models
 {
@@ -15,7 +13,7 @@ namespace ExcellProtecaoVeicular.Models
         [Required]
         public string password { get; set; }
         [Required]
-        //[MaxLength(2)]
+        
         public EnumTipoUsuario TipoUsuario { get; set; }
     }
 }
