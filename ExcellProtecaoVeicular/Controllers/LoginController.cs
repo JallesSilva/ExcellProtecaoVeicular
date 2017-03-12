@@ -22,32 +22,16 @@ namespace ExcellProtecaoVeicular.Controllers
         {
             TempData["Nome"] = User.Identity.Name;
             return View();
-        }
-        [HttpPost]
-        public ActionResult cadastrarUsuarios(Usuarios user)
-        {
-             
-            Enty_.Usuarios.Add(user);
-            Enty_.SaveChanges();
-            TempData["MensagemCadUser"] = "Registro Salvo";
-            user = null;            
-            return View();
-        }
-        public ActionResult cadastrarUsuarios()
-        {
-            return View();
-        }
-        public ActionResult listarUsuario()
-        {
-            
-            var users = Enty_.Usuarios;
-            return View(users);
-        }
+        }       
+       
+        [Route("Logar")]
         public ActionResult Login()
         {
             return View();
         }
+        
         [HttpPost]
+        [Route("Logar")]
         public ActionResult Login(Usuarios usuarios)
         {
             var user_pass =  (from us in Enty_.Usuarios
@@ -64,6 +48,7 @@ namespace ExcellProtecaoVeicular.Controllers
             else if (usuarios.TipoUsuario== EnumTipoUsuario.administrador)
             {
                 FormsAuthentication.SetAuthCookie(usuarios.Login, false);
+                //Session["admin"].ToString();
                 return RedirectToAction("Index", "_admin",new { area="admin"});
               
             }

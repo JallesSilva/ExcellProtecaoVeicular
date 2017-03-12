@@ -1,0 +1,101 @@
+﻿@model ExcellProtecaoVeicular.Areas.admin.Models.ClienteViewModel
+
+@{
+    ViewBag.Title = "cadastrarClientes";
+
+}
+
+<div class="container">
+    <h2>Cadastro de Clientes</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Dados do Cliente</a></li>
+        <li><a data-toggle="tab" href="#menu1" id="#menu1">Menu 1</a></li>
+        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+        <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+    </ul>
+  
+
+    
+    <div class="tab-content">
+        @using (Html.BeginForm("cadastrarClientes", "_admin", FormMethod.Post))
+        {
+        <div id="home" class="tab-pane fade in active">
+            <h3>Cliente</h3>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(cli => cli.Clientes.Nome)
+                @Html.TextBoxFor(cli => cli.Clientes.Nome)
+            </div>            
+            <div class="form-group col-md-3">              
+                @Html.LabelFor(cli => cli.Clientes.Cpf)
+                @Html.TextBoxFor(cli => cli.Clientes.Cpf)
+            </div>
+            <div class="row"></div>
+            <div class="form-group col-md-3">
+                <!-- Rg -->
+                @Html.LabelFor(cli => cli.Clientes.Rg)
+                @Html.TextBoxFor(cli => cli.Clientes.Rg)
+            </div>            
+            <div class="form-group col-md-3">
+                <!-- Data de Nascimento -->
+                @Html.LabelFor(cli=> cli.Clientes.DataNasci)
+                @Html.TextBoxFor(cli => cli.Clientes.DataNasci)
+            </div>            
+            <div class="form-group col-md-3">
+                <!-- CNH -->
+                @Html.LabelFor(cli=> cli.Clientes.Cnh)
+                @Html.TextBoxFor(cli => cli.Clientes.Cnh)
+            </div>            
+            <div class="form-group col-md-3">
+                <!-- Endereco Rua-->
+                @Html.LabelFor(end => end.Endereco.Rua)
+                @Html.TextBoxFor(end => end.Endereco.Rua)
+            </div>            
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Endereco.Quadra)
+                @Html.TextBoxFor(end => end.Endereco.Quadra)
+            </div>             
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Endereco.Lote)
+                @Html.TextBoxFor(end => end.Endereco.Lote)
+            </div>             
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Endereco.UF)
+                @Html.EnumDropDownListFor(end => end.Endereco.UF)
+            </div>             
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Telefone.DDD)
+                @Html.TextBoxFor(end => end.Telefone.DDD)
+            </div> 
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Telefone.Tel_Casa)
+                @Html.TextBoxFor(end => end.Telefone.Tel_Casa)
+            </div> 
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Telefone.Tel_Celular)
+                @Html.TextBoxFor(end => end.Telefone.Tel_Celular)                
+            </div> 
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Telefone.Tel_Recado)
+                @Html.TextBoxFor(end => end.Telefone.Tel_Recado)
+            </div> 
+
+            
+            @*<input type="text" list="cidades" autocomplete="on">
+            <datalist id="cidades">
+                <option value="Brasília">
+                <option value="Rio de Janeiro">
+                <option value="São Paulo">
+            </datalist>*@
+        <input value="Salvar" id="btnCli" type="submit" name="Salvar Cliente" />
+        </div>
+        }
+
+        <div id="menu1" class="tab-pane fade">
+            <h3>Veiculo</h3>
+            <div class="form-group">
+                <input type="button" name="Salvar" value="Salvar" id="teste1" />
+            </div>
+        </div>
+        <p><a href="#menu1">Teste</a></p>
+    </div>
+    </div>

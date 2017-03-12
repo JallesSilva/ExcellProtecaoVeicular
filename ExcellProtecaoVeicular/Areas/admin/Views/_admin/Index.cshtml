@@ -5,8 +5,10 @@
 
 @if (HttpContext.Current.User.Identity.IsAuthenticated)
 {
-    <p>Usuario- @HttpContext.Current.User.Identity.Name</p>
+    <p>Usuario- @HttpContext.Current.User.Identity.Name</p>  
+    
 }
+@Html.ActionLink("Cadastrar Cliente","cadastrar","_admin")
 else
 {
     <p>Usuario não logado</p>

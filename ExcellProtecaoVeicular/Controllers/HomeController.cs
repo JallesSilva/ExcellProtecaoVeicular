@@ -17,30 +17,30 @@ namespace ExcellProtecaoVeicular.Controllers
 
         public ActionResult _HeaderLayout()
         {
-            return View();
+            return PartialView();
         }
         public ActionResult _HeaderNavBarMenu()
         {
-            return View();
+            return PartialView();
         }
         public ActionResult Associacao()
         {
-            return View();
+            return PartialView();
         }
         public ActionResult Beneficios()
         {
-            return View();
+            return PartialView();
         }
         public ActionResult Regulamento()
         {
-            return View();
+            return PartialView();
         }
 
         
         public ActionResult Contato()
         {
 
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -64,7 +64,7 @@ namespace ExcellProtecaoVeicular.Controllers
                 await smtp.SendMailAsync(mail);
                 return RedirectToAction("Index");
             }
-            return View(_objEmail);
+            return PartialView();
           }
 
       
