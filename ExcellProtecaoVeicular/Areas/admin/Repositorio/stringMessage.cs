@@ -10,23 +10,21 @@ namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
         public stringMessages(ClienteViewModel cliente)
         {
             CreateMessageSucessFull(cliente);
-            DadosClientes(cliente);
+            
         }        
 
         public stringMessages(Exception ex) { }
         public stringMessages() { }
 
 
-        public static string CreateMessageSucessFull(ClienteViewModel cliente)
+        public static string CreateMessageSucessFull(ClienteViewModel ClienteViewModel)
         {
-            var msg_ = string.Format("Cliente {0} salvo com sucesso", cliente.Clientes.Nome.ToUpper());
+                
+            var msg_ = string.Format("Cliente {0} salvo com sucesso", ClienteViewModel.Clientes.Nome.ToUpper());
             return msg_;
         }
 
-        public static string DadosClientes(ClienteViewModel cliente)
-        {
-            var msg_ = string.Format("Cliente não foi informado");
-            return msg_;
-        }
+      
+        
     }
 }

@@ -33,31 +33,48 @@ namespace ExcellProtecaoVeicular.Controllers
         [HttpPost]
         [Route("Logar")]
         public ActionResult Login(Usuarios usuarios)
-        {
-            var user_pass =  (from us in Enty_.Usuarios
-                            where us.Login.Equals(usuarios.Login) &&
-                            us.password.Equals(usuarios.password)&& us.TipoUsuario == usuarios.TipoUsuario
-                            select us).SingleOrDefault();
-
-            if (user_pass == null)
+        {            
+            LoginRepositorio loginRepositorio = new LoginRepositorio();               
+            if (usuarios.Nome == null && usuarios.password ==null)
                 {
                 ViewData["log"] = "Usuario ou senha invalido.";
                 return View();
 
             }
-            else if (usuarios.TipoUsuario== EnumTipoUsuario.administrador)
+            else if (usuarios.TipoUsuario == EnumTipoUsuario.administrador)
             {
+                if(loginRepositorio.UsuarioAdministrador(usuarios))
+                {
+                    
                 FormsAuthentication.SetAuthCookie(usuarios.Login, false);
                 //Session["admin"].ToString();
                 return RedirectToAction("Index", "_admin",new { area="admin"});
-              
+                }
+                else
+                { 
+                    ViewData["log"] = "Usuario ou senha invalido.";
+                    return View();
+                }
+
             }
             else if(usuarios.TipoUsuario == EnumTipoUsuario.cliente)
             {
+                if(loginRepositorio.UsuarioCliente(usuarios))
+                { 
                 FormsAuthentication.SetAuthCookie(usuarios.Login, false);
                 return RedirectToAction("Index", "_cliente", new { area="cliente"});
+                }
+                else
+                { 
+                    ViewData["log"] = "Usuario ou senha invalido.";
+                    return View();
+                }
             }
-            else { return View(); }
+            else
+            {
+                ViewData["log"] = "Tipo de Usuario não selecionado";
+                return View();
+            }
             
         }
 

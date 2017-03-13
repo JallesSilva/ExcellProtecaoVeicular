@@ -12,6 +12,9 @@ namespace ExcellProtecaoVeicular.Areas.admin.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int IDBeneficios { get; set; }
+        public int? FK_Cliente { get; set; }
+        [ForeignKey("FK_Cliente")]
+        public Clientes Cliente { get; set; }
         public bool Horas_Veiculos { get; set; }
         public bool HorasAgregados { get; set; }
         public bool Vidros { get; set; }
