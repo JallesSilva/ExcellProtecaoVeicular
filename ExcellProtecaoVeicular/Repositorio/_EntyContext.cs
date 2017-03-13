@@ -12,6 +12,7 @@ namespace ExcellProtecaoVeicular.Repositorio
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Telefone> Telefone { get; set; }
         public DbSet<Veiculos> Veiculos { get; set; }
+        public DbSet<Beneficios> Beneficios { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

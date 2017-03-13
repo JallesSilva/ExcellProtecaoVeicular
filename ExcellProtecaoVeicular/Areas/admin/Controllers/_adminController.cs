@@ -33,7 +33,11 @@ namespace ExcellProtecaoVeicular.Areas.admin.Controllers
         public ActionResult cadastrarClientes(ClienteViewModel cadastrar)
         {
             crudCliente = new CrudCliente();
-            TempData["message"] = crudCliente.CadastrarCliente(cadastrar);
+            TempData["messageTelefone"] = crudCliente.CadastrarTelefone(cadastrar);
+            TempData["messageEndereco"] = crudCliente.CadastrarEndereco(cadastrar);
+            TempData["messageCliente"] = crudCliente.CadastrarCliente(cadastrar);
+            TempData["messageVeiculos"] = crudCliente.CadastarVeiculos(cadastrar);
+            TempData["messageBeneficios"] = crudCliente.CadastrarBeneficios(cadastrar);            
             return View();
         }
     }
