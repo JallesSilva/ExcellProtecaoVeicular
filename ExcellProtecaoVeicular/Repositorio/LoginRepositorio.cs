@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Linq;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 namespace ExcellProtecaoVeicular.Repositorio
 {
     public class LoginRepositorio
@@ -32,22 +32,25 @@ namespace ExcellProtecaoVeicular.Repositorio
             {
                 enty = new _EntyContext();
                 var Tipousuario = (from us in enty.Usuarios
-                                   where (us.Login.Equals(user.Login) &&
-                                   us.password.Equals(user.password) &&
-                                  EnumTipoUsuario.administrador.Equals((user.TipoUsuario.ToString())))
+                                   where (us.Login.ToString()==user.Login.ToString() &&
+                                   us.password.ToString() == user.password.ToString() &&
+                                  us.TipoUsuario.ToString() == user.TipoUsuario.ToString())
                                    select us).AsEnumerable();
-                                   
-                if (Tipousuario == null)
+
+
+                if (Tipousuario.Count() >0)
                 {
-                    return false;
+                    return true;
                 }
                 else
-                    return true;
+                    return false;
             }
             catch (Exception ex)
             {
 
+                enty.Dispose();
                 throw new Exception(string.Format("Error \n {0}", ex.Message));
+                
             }
            
         }

@@ -7,7 +7,7 @@ namespace ExcellProtecaoVeicular.Models
 {
     public enum EnumTipoUsuario
     {
-       cliente ,
-       administrador
+       cliente ='C' ,
+       administrador = 'A'
     }
 }
