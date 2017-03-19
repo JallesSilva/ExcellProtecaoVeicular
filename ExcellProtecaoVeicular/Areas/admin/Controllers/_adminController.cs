@@ -32,13 +32,27 @@ namespace ExcellProtecaoVeicular.Areas.admin.Controllers
         [Authorize]
         public ActionResult cadastrarClientes(ClienteViewModel cadastrar)
         {
-            crudCliente = new CrudCliente();
-            TempData["messageTelefone"] = crudCliente.CadastrarTelefone(cadastrar);
-            TempData["messageEndereco"] = crudCliente.CadastrarEndereco(cadastrar);
-            TempData["messageCliente"] = crudCliente.CadastrarCliente(cadastrar);
-            TempData["messageVeiculos"] = crudCliente.CadastarVeiculos(cadastrar);
-            TempData["messageBeneficios"] = crudCliente.CadastrarBeneficios(cadastrar);            
-            return View();
+            try
+            {
+                crudCliente = new CrudCliente();
+                Clientes clientes = new Clientes();
+                clientes.FK_Telefone = crudCliente.CadastrarTelefone(cadastrar);
+                clientes.FK_Endereco = crudCliente.CadastrarEndereco(cadastrar);
+                clientes.IDCliente = crudCliente.CadastrarCliente(cadastrar, clientes);
+                crudCliente.CadastarVeiculos(cadastrar, clientes);
+                crudCliente.CadastrarBeneficios(cadastrar, clientes);
+                TempData["Mensagem"] = "Dados Salvo com sucesso";
+                Dispose(true);
+                return View();
+            }
+            catch (Exception)
+            {
+                TempData["Mensagem de Erro"] = "Não foi possivel salvar alguns dados.";
+
+                return View();
+            }
+            
+            
         }
     }
 

@@ -32,9 +32,9 @@ namespace ExcellProtecaoVeicular.Repositorio
             {
                 enty = new _EntyContext();
                 var Tipousuario = (from us in enty.Usuarios
-                                   where (us.Login.ToString()==user.Login.ToString() &&
-                                   us.password.ToString() == user.password.ToString() &&
-                                  us.TipoUsuario.ToString() == user.TipoUsuario.ToString())
+                                   where (us.Login == user.Login &&
+                                   us.password == user.password &&
+                                  us.TipoUsuario == user.TipoUsuario )
                                    select us).AsEnumerable();
 
 
@@ -49,7 +49,8 @@ namespace ExcellProtecaoVeicular.Repositorio
             {
 
                 enty.Dispose();
-                throw new Exception(string.Format("Error \n {0}", ex.Message));
+                return false;
+                
                 
             }
            

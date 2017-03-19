@@ -1,27 +1,43 @@
-﻿<nav class="main-nav-outer" id="test">
-    <!--main-nav-start-->
+﻿ <!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <ul class="main-nav">
-            <li><a href="#header" data-target="#header">HOME</a></li>
-            <li><a href="#service">ASSOCIAÇÃO</a></li>
-            <li><a href="#Portfolio">BENEFÍCIOS</a></li>
-            <!-- <li class="small-logo"><a href="#header"><img src="img/small-logo.png" alt=""></a></li> -->
-            <li><a href="#client">REGULAMENTO</a></li>
-            <li>@Html.ActionLink("BOLETO", "Index", "Login", new { area = "cliente" },null)</li>
-            <div class="dropdown">
-               <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown trigger
-                    <span class="caret"></span>
-               </button>
-            <ul class="dropdown-menu" aria-labelledby="dLabel">
-                <li><a href="#">Teste</a></li>        
-      </ul>
-</div>
-            </li>
-
-            <li><a href="#contact">CONTATO</a></li>
-
-        </ul>
-        <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#header" data-target="#header">HOME</a></li>
+                <li><a href="#service">ASSOCIAÇÃO</a></li>
+                <li><a href="#Portfolio">BENEFÍCIOS</a></li>
+                <!-- <li class="small-logo"><a href="#header"><img src="img/small-logo.png" alt=""></a></li> -->
+                <li><a href="#client">REGULAMENTO</a></li>
+                <li>@Html.ActionLink("BOLETO", "Index", "Login", new { area = "cliente" }, null)</li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact">CONTATO</a></li>
+            </ul>
+            @*<ul class="nav navbar-nav navbar-right">
+                <li><a href="../navbar/">Default</a></li>
+                <li><a href="../navbar-static-top/">Static top</a></li>
+                <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            </ul>*@
+        </div><!--/.nav-collapse -->
     </div>
-</nav><!--main-nav-end-->
+</nav>
+<div class="row"></div>

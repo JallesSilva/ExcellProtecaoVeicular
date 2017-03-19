@@ -8,5 +8,5 @@
     <p>Usuario- @HttpContext.Current.User.Identity.Name</p>  
     
 }
-@Html.ActionLink("Cadastrar Cliente", "cadastrar", "_admin")
+@Html.ActionLink("Cadastrar Cliente", "cadastrarClientes", "_admin",new { Area = "admin"},null);
 

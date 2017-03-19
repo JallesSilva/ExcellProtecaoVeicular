@@ -180,6 +180,7 @@
     <Content Include="Scripts\jquery.isotope.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -212,10 +213,6 @@
     <Compile Include="Migrations\201703112006097_ HistoryMigration.cs" />
     <Compile Include="Migrations\201703112006097_ HistoryMigration.Designer.cs">
       <DependentUpon>201703112006097_ HistoryMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703121508402_HistoryMigration1.cs" />
-    <Compile Include="Migrations\201703121508402_HistoryMigration1.Designer.cs">
-      <DependentUpon>201703121508402_HistoryMigration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201703130354494_HistoryMigration2.cs" />
     <Compile Include="Migrations\201703130354494_HistoryMigration2.Designer.cs">
@@ -270,9 +267,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703112006097_ HistoryMigration.resx">
       <DependentUpon>201703112006097_ HistoryMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703121508402_HistoryMigration1.resx">
-      <DependentUpon>201703121508402_HistoryMigration1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703130354494_HistoryMigration2.resx">
       <DependentUpon>201703130354494_HistoryMigration2.cs</DependentUpon>

@@ -12,86 +12,102 @@ namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
     public class CrudCliente
     {
         _EntyContext enty = null;
-        
+        int foreignKey = 0;        
+
         public CrudCliente()
         {
-            enty = new _EntyContext();              
+            enty = new _EntyContext();
+            
         }
 
         // Cadastro
-        public string CadastrarCliente(ClienteViewModel cliente)
+        public int CadastrarCliente(ClienteViewModel cliente, Clientes _cliente)
         {
-            string msg;
+            
 
             if(cliente.Clientes == null)
             {
-                return string.Format("Dados do cliente não foi informado");
+                return -1;
             }
             try
-            {
-                enty.Clientes.Add(cliente.Clientes);
-                enty.SaveChanges();                
-                return stringMessages.CreateMessageSucessFull(cliente);
+            {                
+                enty.Clientes.Add(cliente.Clientes);                
+                enty.SaveChanges();
+                cliente.Clientes.FK_Endereco = (int)_cliente.FK_Endereco;
+                cliente.Clientes.FK_Telefone = (int)_cliente.FK_Telefone;
+                enty.Clientes.Attach(cliente.Clientes);
+                enty.Entry(cliente.Clientes).State = EntityState.Modified;
+                return cliente.Clientes.IDCliente;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-              msg = string.Format("Não foi possivel salvar os dados, verifique por favor \n Possivel Causa do erro ; {0}", ex.Message);              
-              return msg;      
+              
+              return -1;      
             }
             
             
         }
-        public string CadastarVeiculos(ClienteViewModel veiculos)
+        public int CadastarVeiculos(ClienteViewModel veiculos, Clientes _clientes)
         {   
             
             if(veiculos.Veiculos == null)
             {
-                return string.Format("Dados do Veiculo não informado");
+                return -1;
             }
             try
             {
                 enty.Veiculos.Add(veiculos.Veiculos);
                 enty.SaveChanges();
-                return string.Format("Dados do veiculo salvo com sucesso. \n {0}", veiculos.Veiculos.Placa);
+                veiculos.Veiculos.FK_Clientes = _clientes.IDCliente;
+                enty.Veiculos.Attach(veiculos.Veiculos);
+                enty.Entry(veiculos.Veiculos).State = EntityState.Modified;
+                enty.SaveChanges();
+                return 1;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                return string.Format("Erro ao salvar os dados do veiculo \n Possivel erro: {0}", ex.Message);
+                return s-1
             }
             
             
         }
-        public string CadastrarEndereco(ClienteViewModel endereco)
+        public int CadastrarEndereco(ClienteViewModel endereco)
         {
 
             if (endereco.Endereco == null)
             {
-                return string.Format("Dados do endereco não foram informados.");
+                return 0;
             }
             try
-            {
+            {   
+                
                 enty.Endereco.Add(endereco.Endereco);
                 enty.SaveChanges();
-                return string.Format("Dados do Endereço salvo com sucesso");
+
+                return (int)endereco.Endereco.IDEndereco; 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                return string.Format("Não foi possível salvar o Endereco. \n Possivel erro: {0}", ex.Message);
+                return 0;
             }
         }
-        public string CadastrarBeneficios(ClienteViewModel beneficios)
+        public int CadastrarBeneficios(ClienteViewModel beneficios, Clientes _clientes)
         {
             if(beneficios.Beneficios== null)
             {
-                return string.Format("Dados do Beneficios não foram informados.");
+                return -1;
             }
             try
             {
                 enty.Beneficios.Add(beneficios.Beneficios);
                 enty.SaveChanges();
-                return string.Format("Dados do Beneficios salvo com sucesso");
+                beneficios.Beneficios.FK_Cliente = _clientes.IDCliente;
+                enty.Beneficios.Attach(beneficios.Beneficios);
+                enty.Entry(beneficios.Beneficios).State = EntityState.Modified;
+                enty.SaveChanges();
+                return 1;
             }
             catch (Exception ex)
             {
@@ -99,25 +115,26 @@ namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
                 return string.Format("Não foi possível salvar os beneficios. \n Possivel erro: {0}",ex.Message);
             }
         }
-        public string CadastrarTelefone(ClienteViewModel telefone)
+        public int CadastrarTelefone(ClienteViewModel telefone)
         {
             if (telefone.Beneficios == null)
             {
-                return string.Format("Dados do Telefone não foram informados.");
+                return 0;
             }
             try
             {
-                enty.Beneficios.Add(telefone.Beneficios);
+                enty.Telefone.Add(telefone.Telefone);
                 enty.SaveChanges();
-                return string.Format("Dados do Telefone salvo com sucesso");
+                return (int)telefone.Telefone.IDTelefone;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                return string.Format("Não foi possível salvar os Telefone. \n Possivel erro: {0}", ex.Message);
+                return 0;
             }
         }
         // Exclusão
         //Alteracao
+        //Listar
     }
 }
