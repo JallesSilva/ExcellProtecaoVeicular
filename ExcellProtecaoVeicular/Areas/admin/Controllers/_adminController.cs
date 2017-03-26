@@ -14,7 +14,7 @@ namespace ExcellProtecaoVeicular.Areas.admin.Controllers
     {
         CrudCliente crudCliente = null;
 
-        [Authorize]
+        [Authorize]        
         [Route("Inicio")]
         public ActionResult Index()
         {
@@ -51,8 +51,25 @@ namespace ExcellProtecaoVeicular.Areas.admin.Controllers
 
                 return View();
             }
+        }
+
+        [Authorize]
+        public ActionResult listarClientes(Clientes listar)
+        {
+            crudCliente = new CrudCliente();
+            var lista = crudCliente.listarClientes();
+            return View(lista);
             
-            
+        }
+        
+
+        [Authorize]
+        public ActionResult deletarClientes(int id)
+        {
+            crudCliente = new CrudCliente();
+            var cliente = crudCliente.deletarCliente(id);
+            TempData["Cliente"] = cliente;
+            return RedirectToAction("listarClientes");
         }
     }
 

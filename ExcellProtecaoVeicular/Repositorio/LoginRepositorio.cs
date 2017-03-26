@@ -45,7 +45,7 @@ namespace ExcellProtecaoVeicular.Repositorio
                 else
                     return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 enty.Dispose();

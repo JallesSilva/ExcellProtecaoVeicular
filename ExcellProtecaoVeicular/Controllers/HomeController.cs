@@ -3,6 +3,7 @@ using ExcellProtecaoVeicular.Models;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using ExcellProtecaoVeicular.Repositorio;
 
 namespace ExcellProtecaoVeicular.Controllers
 {
@@ -37,35 +38,41 @@ namespace ExcellProtecaoVeicular.Controllers
         }
 
         
-        public ActionResult Contato()
+        [Route("Home/{TipoUsuario}")]
+        public ActionResult Contato(string TipoUsuario)
         {
+            if(TipoUsuario.Equals(""))
 
             return PartialView();
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Contato(_Email _objEmail)
+        [HttpPost]        
+        public ActionResult Contato(_Email _objEmail)
         {
             if(ModelState.IsValid)
             {
-                var body = "<p>Message: Testando</p>";
-                var mail = new MailMessage();                
-                mail.To.Add("excell - contabil@excellprotecaoveicular.com.br"); // para quem vai o e-mail
-                mail.From = new MailAddress("no-replay@excellprotecaoveicular.com.br"); // De onde vem o e-mail
-                mail.Subject = "Site - Excell Proteção Veicular"; // Titulo do E-mail
-                mail.Body = body; // Corpo da mensagem
-                mail.IsBodyHtml = true; // Transformando a mensagem em html
-                var smtp = new SmtpClient();
-                smtp.Host = "mail.excellprotecaoveicular.com.br";
-                //smtp.Port = 587;
-                //smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential("excell-contabil@excellprotecaoveicular.com.br", "131126Japa@");
-                smtp.EnableSsl = false;
-                await smtp.SendMailAsync(mail);
-                return RedirectToAction("Index");
+                try
+                {
+                    HomeRepositorio repositorio = new HomeRepositorio();
+                    repositorio.SetEmail("SemPath", "brendon.genssinger@gmail.com","Site - Excell Proteção Veicular.");
+                    //excellprotecaoveicular@hotmail.com
+                    TempData["MensagemSucesso"] = "Envio com sucesso";
+                    return Redirect(Url + "/#contact");
+                }
+                catch (System.Exception e)
+                {
+                    TempData["MensagemError"] = "Mensagem não enviada";
+                    return Redirect(Url + "/#contact");
+                }
+                
             }
-            return PartialView();
+            return Redirect("Index"); 
           }
+
+        public ActionResult PaginaError()
+        {
+            return View() ;
+        }
 
       
     }

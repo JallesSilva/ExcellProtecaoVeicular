@@ -154,6 +154,7 @@
     <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\admin\Views\_admin\Index.cshtml" />
     <Content Include="Areas\admin\Views\_admin\cadastrarClientes.cshtml" />
+    <Content Include="Areas\admin\Views\_admin\listarClientes.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\24horas.png" />
     <Content Include="images\bg-map.png" />
@@ -226,6 +227,7 @@
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Models\_Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\HomeRepositorio.cs" />
     <Compile Include="Repositorio\LoginRepositorio.cs" />
     <Compile Include="Repositorio\_EntyContext.cs" />
   </ItemGroup>
@@ -251,6 +253,7 @@
     <Content Include="Views\Login\listarUsuario.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\paginaLogada.cshtml" />
+    <Content Include="Views\Home\PaginaError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

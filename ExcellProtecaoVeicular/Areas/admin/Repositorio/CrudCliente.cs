@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data.Entity;
 using ExcellProtecaoVeicular.Repositorio;
 using ExcellProtecaoVeicular.Areas.admin.Models;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Data;
 
 namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
 {
     public class CrudCliente
     {
         _EntyContext enty = null;
-        int foreignKey = 0;        
-
-        public CrudCliente()
+         public CrudCliente()
         {
-            enty = new _EntyContext();
-            
+            enty = new _EntyContext();            
         }
 
         // Cadastro
@@ -67,7 +63,7 @@ namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
             catch (Exception)
             {
 
-                return s-1
+                return - 1;
             }
             
             
@@ -109,10 +105,10 @@ namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
                 enty.SaveChanges();
                 return 1;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                return string.Format("Não foi possível salvar os beneficios. \n Possivel erro: {0}",ex.Message);
+                return -1;
             }
         }
         public int CadastrarTelefone(ClienteViewModel telefone)
@@ -134,7 +130,28 @@ namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
             }
         }
         // Exclusão
+        public Clientes deletarCliente(int id)
+        {
+            
+            var _cliente = enty.Clientes.First(c => c.IDCliente == id);
+            var _endereco = enty.Endereco.First(c => c.IDEndereco == _cliente.FK_Endereco);
+            var _telefone = enty.Telefone.First(c => c.IDTelefone == _cliente.FK_Telefone);
+            var _veiculos = enty.Veiculos.First(c => c.FK_Clientes == _cliente.IDCliente);
+            var _beneficios = enty.Beneficios.First(c => c.FK_Cliente == _cliente.IDCliente);            
+            enty.Beneficios.Attach(_beneficios);
+            enty.Veiculos.Attach(_veiculos);
+            enty.Telefone.Attach(_telefone);
+            enty.Endereco.Attach(_endereco);
+            enty.Clientes.Attach(_cliente);
+            enty.SaveChanges();           
+            return _cliente;
+        }
         //Alteracao
         //Listar
+        public List<Clientes> listarClientes()
+        {            
+            var listar = enty.Clientes.AsEnumerable().OrderBy(c=> c.Nome);
+            return listar.ToList();
+        }
     }
 }
