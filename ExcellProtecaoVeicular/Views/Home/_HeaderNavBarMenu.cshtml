@@ -24,14 +24,14 @@
                         <span class="glyphicon glyphicon-lock"></span> LOGIN<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">                        
-                            <li>@Html.ActionLink("ADMINISTRADOR", "index", "_admin", new { area = "admin", @id = "ADMINISTRADOR"}, null)
+                            <li>@Html.ActionLink("ADMINISTRADOR", "index", "_admin", new { area = "admin"}, null)
                             @*<li><a href="#">CLIENTE</a></li>*@
                             @*<li><a href="#">Something else here</a></li>*@
                             <li role="separator" class="divider"></li>
                             @*<li class="dropdown-header">Nav header</li>*@
-                            <li>@Html.ActionLink("CLIENTE","index","_admin",new { area = "admin",@id="CLIENTE"})</li>
+                            <li>@Html.ActionLink("CLIENTE","index","_admin",new { area = "admin"},null)</li>
                             @*<li><a href="#">One more separated link</a></li>*@                        
-                    </ul>
+                    </ul>   
                 </li>
             </ul>
             @*<ul class="nav navbar-nav navbar-right">

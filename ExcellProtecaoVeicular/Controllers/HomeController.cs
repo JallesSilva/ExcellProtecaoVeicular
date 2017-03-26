@@ -38,11 +38,9 @@ namespace ExcellProtecaoVeicular.Controllers
         }
 
         
-        [Route("Home/{TipoUsuario}")]
-        public ActionResult Contato(string TipoUsuario)
+        
+        public ActionResult Contato()
         {
-            if(TipoUsuario.Equals(""))
-
             return PartialView();
         }
 
@@ -57,7 +55,7 @@ namespace ExcellProtecaoVeicular.Controllers
                     repositorio.SetEmail("SemPath", "brendon.genssinger@gmail.com","Site - Excell Proteção Veicular.");
                     //excellprotecaoveicular@hotmail.com
                     TempData["MensagemSucesso"] = "Envio com sucesso";
-                    return Redirect(Url + "/#contact");
+                    return Redirect(Url.RouteCollection + "/#contact");
                 }
                 catch (System.Exception e)
                 {
