@@ -1,8 +1,7 @@
 ﻿
-using System.Web;
 using System.Web.Optimization;
 
-namespace ExcellProtecaoVeicular.App_Start
+namespace ExcellProtecaoVeicular.Web.App_Start
 {
     public class BundleConfig
     {
@@ -10,6 +9,8 @@ namespace ExcellProtecaoVeicular.App_Start
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryMaskedInput").Include(
+                "~/Scripts/jquery.maskedinput*"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryvalidate").Include(
                 "~/Scripts/jquery.validade*"));
             bundles.Add(new ScriptBundle("~/bundles/classie").Include(

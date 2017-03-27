@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ExcellProtecaoVeicular.Areas.admin.Models;
-namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
+using ExcellProtecaoVeicular.Model;
+namespace ExcellProtecaoVeicular.Data
 {
     public class stringMessages
     {

@@ -1,11 +1,10 @@
-﻿using ExcellProtecaoVeicular.Models;
-using ExcellProtecaoVeicular.Repositorio;
+﻿using ExcellProtecaoVeicular.Model;
+using ExcellProtecaoVeicular.Data;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Linq;
-using System;
 
-namespace ExcellProtecaoVeicular.Controllers
+
+namespace ExcellProtecaoVeicular.Web.Controllers
 {
     public class LoginController : Controller
     {

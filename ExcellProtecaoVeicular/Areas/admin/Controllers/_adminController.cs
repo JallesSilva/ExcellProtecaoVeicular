@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using ExcellProtecaoVeicular.Areas.admin.Models;
-using ExcellProtecaoVeicular.Areas.admin.Repositorio;
+using ExcellProtecaoVeicular.Model;
+using ExcellProtecaoVeicular.Data;
 
-namespace ExcellProtecaoVeicular.Areas.admin.Controllers
+namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 {
     
     [RoutePrefix("Administrador")]
@@ -15,7 +12,7 @@ namespace ExcellProtecaoVeicular.Areas.admin.Controllers
         CrudCliente crudCliente = null;
 
         [Authorize]        
-        [Route("Inicio")]
+        [Route("Inicio")]        
         public ActionResult Index()
         {
             return View();

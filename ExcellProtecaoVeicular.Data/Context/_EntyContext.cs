@@ -1,9 +1,7 @@
 ﻿using System.Data.Entity;
-using ExcellProtecaoVeicular.Models;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using ExcellProtecaoVeicular.Areas.admin.Models;
-
-namespace ExcellProtecaoVeicular.Repositorio
+using ExcellProtecaoVeicular.Model;
+namespace ExcellProtecaoVeicular.Data
 {
     public class _EntyContext : DbContext
     {

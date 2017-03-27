@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using ExcellProtecaoVeicular.Areas.admin.Models.Enumerador;
-namespace ExcellProtecaoVeicular.Areas.admin.Models
+using ExcellProtecaoVeicular.Model;
+namespace ExcellProtecaoVeicular.Model
 {
     public class Endereco
     {

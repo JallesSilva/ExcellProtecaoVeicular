@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Data.Entity;
-using ExcellProtecaoVeicular.Repositorio;
-using ExcellProtecaoVeicular.Areas.admin.Models;
+using ExcellProtecaoVeicular.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 
-namespace ExcellProtecaoVeicular.Areas.admin.Repositorio
+namespace ExcellProtecaoVeicular.Data
 {
     public class CrudCliente
     {

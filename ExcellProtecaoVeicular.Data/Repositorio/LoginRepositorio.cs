@@ -1,11 +1,7 @@
-﻿using ExcellProtecaoVeicular.Models;
-using ExcellProtecaoVeicular.Repositorio;
-using System.Web.Mvc;
-using System.Web.Security;
+﻿using ExcellProtecaoVeicular.Model;
 using System.Linq;
 using System;
-using System.Collections.Generic;
-namespace ExcellProtecaoVeicular.Repositorio
+namespace ExcellProtecaoVeicular.Data
 {
     public class LoginRepositorio
     {

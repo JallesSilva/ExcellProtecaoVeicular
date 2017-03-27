@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using ExcellProtecaoVeicular.Models;
-using System.ComponentModel;
-using System.Net.Mail;
-namespace ExcellProtecaoVeicular.Repositorio
+﻿using System.Net.Mail;
+namespace ExcellProtecaoVeicular.Data
 {
     public class HomeRepositorio
     {

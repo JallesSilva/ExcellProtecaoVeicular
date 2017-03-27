@@ -1,11 +1,9 @@
 ﻿using System.Web.Mvc;
-using ExcellProtecaoVeicular.Models;
-using System.Net.Mail;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using ExcellProtecaoVeicular.Repositorio;
+using ExcellProtecaoVeicular.Data;
+using ExcellProtecaoVeicular.Model;
 
-namespace ExcellProtecaoVeicular.Controllers
+namespace ExcellProtecaoVeicular.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -55,16 +53,16 @@ namespace ExcellProtecaoVeicular.Controllers
                     repositorio.SetEmail("SemPath", "brendon.genssinger@gmail.com","Site - Excell Proteção Veicular.");
                     //excellprotecaoveicular@hotmail.com
                     TempData["MensagemSucesso"] = "Envio com sucesso";
-                    return Redirect(Url.RouteCollection + "/#contact");
+                    return PartialView();
                 }
-                catch (System.Exception e)
+                catch (System.Exception)
                 {
                     TempData["MensagemError"] = "Mensagem não enviada";
-                    return Redirect(Url + "/#contact");
+                    return PartialView();
                 }
                 
             }
-            return Redirect("Index"); 
+            return View("Index"); 
           }
 
         public ActionResult PaginaError()

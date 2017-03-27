@@ -1,8 +1,8 @@
 ﻿
 
 <script>
-    $(document).ready(function(e){
-        $(".telefoneMask")
+    $(function () {
+        $("#telefoneMask")
         .mask("(99) 9999-9999?9")
         .focusout(function (event) {
             var target, phone, element;
@@ -10,24 +10,25 @@
             phone = target.value.replace(/\D/g, '');
             element = $(target);
             element.unmask();
-            if(phone.length > 10) {
+            if (phone.length > 10) {
                 element.mask("(99) 99999-999?9");
             } else {
                 element.mask("(99) 9999-9999?9");
             }
         });
-	});
+    });
 
-    //$(document).ready(function (e) {
+    $(function () {
+        $("#alertaDeMensagem").filt
+    });
 
-    //    $('#test').scrollToFixed();
-
-    //    $('.res-nav_click').click(function(){
-    //        $('.main-nav').slideToggle();
-    //        return false
-    //    });
-
-    //});
+    function validateEmail($email) {
+        var emailReg = "/^([\w-\.]+" + "@@" + "([\w-]+\.)+[\w-]{2,4})?$/";
+        return emailReg.test($email);
+        if (!validateEmail(emailaddress)) {
+        }
+    }
+    
 </script>
 
 <script>
