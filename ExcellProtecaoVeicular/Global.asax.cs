@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Optimization;
+using ExcellProtecaoVeicular.Web.App_Start;
 
-namespace ExcellProtecaoVeicular
+namespace ExcellProtecaoVeicular.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -13,6 +15,7 @@ namespace ExcellProtecaoVeicular
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

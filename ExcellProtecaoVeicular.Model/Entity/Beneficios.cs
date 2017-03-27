@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ExcellProtecaoVeicular.Areas.admin.Models
+namespace ExcellProtecaoVeicular.Model
 {
     public class Beneficios
     {

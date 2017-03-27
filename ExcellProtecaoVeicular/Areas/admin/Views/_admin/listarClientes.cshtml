@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ExcellProtecaoVeicular.Model.Clientes>
+
+@{
+    ViewBag.Title = "Listar Clientes";
+}
+
+<h2>listarClientes - Quantidade de Clientes @Model.Count()</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>        
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNasci)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>        
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNasci)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cnh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDCliente }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDCliente }) |
+            @Html.ActionLink("Delete", "deletarClientes", new { id=item.IDCliente })
+        </td>
+    </tr>
+}
+
+</table>

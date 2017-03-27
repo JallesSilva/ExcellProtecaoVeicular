@@ -5,7 +5,7 @@ namespace ExcellProtecaoVeicular.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ExcellProtecaoVeicular.Repositorio._EntyContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ExcellProtecaoVeicular.Data._EntyContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace ExcellProtecaoVeicular.Migrations
             ContextKey = "ExcellProtecaoVeicular.Repositorio._EntyContext";
         }
 
-        protected override void Seed(ExcellProtecaoVeicular.Repositorio._EntyContext context)
+        protected override void Seed(ExcellProtecaoVeicular.Data._EntyContext context)
         {
             //  This method will be called after migrating to the latest version.
 

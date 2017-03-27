@@ -1,8 +1,8 @@
-﻿@model ExcellProtecaoVeicular.Models.Usuarios
+﻿@model ExcellProtecaoVeicular.Model.Usuarios
 
 @{
     ViewBag.Title = "Login";
-    
+
 }
 <div style="align-items:center">
     <h4>ACESSO RESTRITO</h4>
@@ -10,7 +10,7 @@
 
     <div class="container" style="margin-top:0 auto;">
 
-        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { htmlAttributes = new { @class = "form-horizontal" } }))
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-horizontal" ,@style = "margin-left:30%;"} ))
         {
 
             @Html.ValidationSummary(true)

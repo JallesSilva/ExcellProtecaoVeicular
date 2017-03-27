@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExcellProtecaoVeicular</RootNamespace>
-    <AssemblyName>ExcellProtecaoVeicular</AssemblyName>
+    <RootNamespace>ExcellProtecaoVeicular.Web</RootNamespace>
+    <AssemblyName>ExcellProtecaoVeicular.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -88,6 +93,10 @@
       <HintPath>..\packages\MvcMailer.4.5\lib\45\Mvc.Mailer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -98,6 +107,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -105,6 +118,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -154,6 +171,7 @@
     <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\admin\Views\_admin\Index.cshtml" />
     <Content Include="Areas\admin\Views\_admin\cadastrarClientes.cshtml" />
+    <Content Include="Areas\admin\Views\_admin\listarClientes.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\24horas.png" />
     <Content Include="images\bg-map.png" />
@@ -180,6 +198,8 @@
     <Content Include="Scripts\jquery.isotope.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -188,21 +208,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\_adminController.cs" />
-    <Compile Include="Areas\admin\Models\Beneficios.cs" />
-    <Compile Include="Areas\admin\Models\Clientes.cs" />
-    <Compile Include="Areas\admin\Models\Endereco.cs" />
-    <Compile Include="Areas\admin\Models\Enumerador\EnumDias.cs" />
-    <Compile Include="Areas\admin\Models\Enumerador\EnumFundo.cs" />
-    <Compile Include="Areas\admin\Models\Enumerador\EnumUF.cs" />
-    <Compile Include="Areas\admin\Models\Telefone.cs" />
-    <Compile Include="Areas\admin\Models\Veiculos.cs" />
-    <Compile Include="Areas\admin\Models\ClienteViewModel.cs" />
-    <Compile Include="Areas\admin\Repositorio\CrudCliente.cs" />
-    <Compile Include="Areas\admin\Repositorio\EnumClientes.cs" />
-    <Compile Include="Areas\admin\Repositorio\stringMessage.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Migrations\201703041726188_InitialCreate.cs" />
@@ -213,24 +222,15 @@
     <Compile Include="Migrations\201703112006097_ HistoryMigration.Designer.cs">
       <DependentUpon>201703112006097_ HistoryMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703121508402_HistoryMigration1.cs" />
-    <Compile Include="Migrations\201703121508402_HistoryMigration1.Designer.cs">
-      <DependentUpon>201703121508402_HistoryMigration1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201703130354494_HistoryMigration2.cs" />
     <Compile Include="Migrations\201703130354494_HistoryMigration2.Designer.cs">
       <DependentUpon>201703130354494_HistoryMigration2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Enum\EnumTipoUsuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Usuarios.cs" />
-    <Compile Include="Models\_Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorio\LoginRepositorio.cs" />
-    <Compile Include="Repositorio\_EntyContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -254,6 +254,7 @@
     <Content Include="Views\Login\listarUsuario.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\paginaLogada.cshtml" />
+    <Content Include="Views\Home\PaginaError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -263,6 +264,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\admin\Models\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703041726188_InitialCreate.resx">
@@ -271,12 +274,19 @@
     <EmbeddedResource Include="Migrations\201703112006097_ HistoryMigration.resx">
       <DependentUpon>201703112006097_ HistoryMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703121508402_HistoryMigration1.resx">
-      <DependentUpon>201703121508402_HistoryMigration1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703130354494_HistoryMigration2.resx">
       <DependentUpon>201703130354494_HistoryMigration2.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcellProtecaoVeicular.Data\ExcellProtecaoVeicular.Data.csproj">
+      <Project>{72a5eda1-775b-418c-bca5-cee24634a0fc}</Project>
+      <Name>ExcellProtecaoVeicular.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellProtecaoVeicular.Model\ExcellProtecaoVeicular.Model.csproj">
+      <Project>{ffc4fffc-32f3-4fc4-aac1-ff39e5480e94}</Project>
+      <Name>ExcellProtecaoVeicular.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ExcellProtecaoVeicular.Areas.admin.Models.Enumerador
+namespace ExcellProtecaoVeicular.Model
 {
     public enum EnumUF
     {

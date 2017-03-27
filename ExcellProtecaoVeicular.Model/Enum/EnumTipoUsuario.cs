@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ExcellProtecaoVeicular.Models
+namespace ExcellProtecaoVeicular.Model
 {
     public enum EnumTipoUsuario
     {
-       cliente ,
-       administrador
+       cliente = 1,
+       administrador = 2
     }
 }

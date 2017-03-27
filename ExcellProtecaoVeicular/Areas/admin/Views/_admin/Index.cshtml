@@ -5,8 +5,10 @@
 
 @if (HttpContext.Current.User.Identity.IsAuthenticated)
 {
-    <p>Usuario- @HttpContext.Current.User.Identity.Name</p>  
+    <h3>Seja Bem Vindo - Painel Administrador <br/></h3>
+    <p>Usuario - @HttpContext.Current.User.Identity.Name</p>  
     
 }
-@Html.ActionLink("Cadastrar Cliente", "cadastrar", "_admin")
+
+
 

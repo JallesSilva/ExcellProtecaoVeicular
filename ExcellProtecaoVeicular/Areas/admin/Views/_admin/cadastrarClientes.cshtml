@@ -1,4 +1,4 @@
-﻿@model ExcellProtecaoVeicular.Areas.admin.Models.ClienteViewModel
+﻿@model ExcellProtecaoVeicular.Model.ClienteViewModel
 
 @{
     ViewBag.Title = "cadastrarClientes";
@@ -8,15 +8,12 @@
 <div class="container">
     <h2>Cadastro de Clientes</h2>
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Dados do Cliente</a></li>
-        <li><a data-toggle="tab" href="#menu1" id="#menu1">Menu 1</a></li>
-        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-        <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+        <li class="active"><a data-toggle="tab" href="#home">Dados do Cliente</a></li>        
     </ul>
   
 
     
-    <div class="tab-content">
+    
         @using (Html.BeginForm("cadastrarClientes", "_admin", FormMethod.Post))
         {
         <div id="home" class="tab-pane fade in active">
@@ -29,24 +26,27 @@
                 @Html.LabelFor(cli => cli.Clientes.Cpf)
                 @Html.TextBoxFor(cli => cli.Clientes.Cpf)
             </div>
-            <div class="row"></div>
             <div class="form-group col-md-3">
-                <!-- Rg -->
                 @Html.LabelFor(cli => cli.Clientes.Rg)
                 @Html.TextBoxFor(cli => cli.Clientes.Rg)
             </div>            
             <div class="form-group col-md-3">
-                <!-- Data de Nascimento -->
-                @Html.LabelFor(cli=> cli.Clientes.DataNasci)
+                @Html.LabelFor(cli => cli.Clientes.DataNasci)
                 @Html.TextBoxFor(cli => cli.Clientes.DataNasci)
             </div>            
             <div class="form-group col-md-3">
-                <!-- CNH -->
-                @Html.LabelFor(cli=> cli.Clientes.Cnh)
+                @Html.LabelFor(cli => cli.Clientes.Cnh)
                 @Html.TextBoxFor(cli => cli.Clientes.Cnh)
             </div>            
             <div class="form-group col-md-3">
-                <!-- Endereco Rua-->
+                @Html.LabelFor(cli => cli.Clientes.Email)
+                @Html.TextBoxFor(cli => cli.Clientes.Email)
+            </div>
+            @* Endereco *@
+            <div class="row"></div>
+            <h3>Endereço</h3>            
+            <div class="form-group col-md-3">
+                
                 @Html.LabelFor(end => end.Endereco.Rua)
                 @Html.TextBoxFor(end => end.Endereco.Rua)
             </div>            
@@ -61,7 +61,10 @@
             <div class="form-group col-md-3">
                 @Html.LabelFor(end => end.Endereco.UF)
                 @Html.EnumDropDownListFor(end => end.Endereco.UF)
-            </div>             
+            </div>
+            @* Telefone *@
+            <div class="row"></div>
+            <h3>Telefone</h3>
             <div class="form-group col-md-3">
                 @Html.LabelFor(end => end.Telefone.DDD)
                 @Html.TextBoxFor(end => end.Telefone.DDD)
@@ -78,6 +81,38 @@
                 @Html.LabelFor(end => end.Telefone.Tel_Recado)
                 @Html.TextBoxFor(end => end.Telefone.Tel_Recado)
             </div> 
+            @* Veiculos *@
+            <div class="row"></div>
+            <h3>Veiculos</h3>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Veiculos.Marca)
+                @Html.TextBoxFor(end => end.Veiculos.Marca)
+            </div>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Veiculos.Modelo)
+                @Html.TextBoxFor(end => end.Veiculos.Modelo)
+            </div>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(end => end.Veiculos.Placa)
+                @Html.TextBoxFor(end => end.Veiculos.Placa)
+            </div>
+            @* Beneficios *@
+            <div class="row"></div>
+            <h3>Beneficios</h3>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(b => b.Beneficios.Horas_Veiculos)
+                @Html.CheckBoxFor(b => b.Beneficios.Horas_Veiculos)
+            </div>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(b => b.Beneficios.HorasAgregados)
+                @Html.CheckBoxFor(b => b.Beneficios.HorasAgregados)
+            </div>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(b => b.Beneficios.Vidros)
+                @Html.CheckBoxFor(b => b.Beneficios.Vidros)
+            </div>
+            
+            <div class="row"></div>
 
             
             @*<input type="text" list="cidades" autocomplete="on">
@@ -90,12 +125,27 @@
         </div>
         }
 
-        <div id="menu1" class="tab-pane fade in active">
-            <h3>Veiculo</h3>
-            <div class="form-group">
-                <input type="button" name="Salvar" value="Salvar" id="teste1" />
+    @{ 
+        if(TempData["Mensagem"]!=null)
+        {
+
+            <div class="page-header">
+                <h1>Alerta</h1>
             </div>
-        </div>
-        <p><a href="#menu1">Teste</a></p>
+            <div class="alert alert-success" role="alert">
+                <strong>Informação</strong>@TempData["Mensagem"]
+            </div>
+        }
+        else if (TempData["Mensagem de Erro"] != null)
+        {
+            <div class="page-header">
+                <h1>Alerta</h1>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                <strong>Atenção</strong>@TempData["Mensagem de Erro"]
+            </div>
+        }
+    }
+    
     </div>
-    </div>
+    
