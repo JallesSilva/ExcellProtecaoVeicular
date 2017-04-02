@@ -152,5 +152,10 @@ namespace ExcellProtecaoVeicular.Data
             var listar = enty.Clientes.AsEnumerable().OrderBy(c=> c.Nome);
             return listar.ToList();
         }
+
+        //public void CadastrarImagensCliente(ClienteViewModel imagens,Clientes Idclientes)
+        //{
+            
+        //}
     }
 }

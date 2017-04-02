@@ -6,123 +6,160 @@
 }
 
 <div class="container">
-    <h2>Cadastro de Clientes</h2>
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Dados do Cliente</a></li>        
-    </ul>
-  
-
+    <div class="row" style="padding: 1px;"></div>
     
-    
-        @using (Html.BeginForm("cadastrarClientes", "_admin", FormMethod.Post))
-        {
-        <div id="home" class="tab-pane fade in active">
-            <h3>Cliente</h3>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(cli => cli.Clientes.Nome)
-                @Html.TextBoxFor(cli => cli.Clientes.Nome)
-            </div>            
-            <div class="form-group col-md-3">              
-                @Html.LabelFor(cli => cli.Clientes.Cpf)
-                @Html.TextBoxFor(cli => cli.Clientes.Cpf)
-            </div>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(cli => cli.Clientes.Rg)
-                @Html.TextBoxFor(cli => cli.Clientes.Rg)
-            </div>            
-            <div class="form-group col-md-3">
-                @Html.LabelFor(cli => cli.Clientes.DataNasci)
-                @Html.TextBoxFor(cli => cli.Clientes.DataNasci)
-            </div>            
-            <div class="form-group col-md-3">
-                @Html.LabelFor(cli => cli.Clientes.Cnh)
-                @Html.TextBoxFor(cli => cli.Clientes.Cnh)
-            </div>            
-            <div class="form-group col-md-3">
-                @Html.LabelFor(cli => cli.Clientes.Email)
-                @Html.TextBoxFor(cli => cli.Clientes.Email)
-            </div>
-            @* Endereco *@
-            <div class="row"></div>
-            <h3>Endereço</h3>            
-            <div class="form-group col-md-3">
-                
-                @Html.LabelFor(end => end.Endereco.Rua)
-                @Html.TextBoxFor(end => end.Endereco.Rua)
-            </div>            
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Endereco.Quadra)
-                @Html.TextBoxFor(end => end.Endereco.Quadra)
-            </div>             
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Endereco.Lote)
-                @Html.TextBoxFor(end => end.Endereco.Lote)
-            </div>             
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Endereco.UF)
-                @Html.EnumDropDownListFor(end => end.Endereco.UF)
-            </div>
-            @* Telefone *@
-            <div class="row"></div>
-            <h3>Telefone</h3>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Telefone.DDD)
-                @Html.TextBoxFor(end => end.Telefone.DDD)
-            </div> 
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Telefone.Tel_Casa)
-                @Html.TextBoxFor(end => end.Telefone.Tel_Casa)
-            </div> 
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Telefone.Tel_Celular)
-                @Html.TextBoxFor(end => end.Telefone.Tel_Celular)                
-            </div> 
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Telefone.Tel_Recado)
-                @Html.TextBoxFor(end => end.Telefone.Tel_Recado)
-            </div> 
-            @* Veiculos *@
-            <div class="row"></div>
-            <h3>Veiculos</h3>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Veiculos.Marca)
-                @Html.TextBoxFor(end => end.Veiculos.Marca)
-            </div>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Veiculos.Modelo)
-                @Html.TextBoxFor(end => end.Veiculos.Modelo)
-            </div>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(end => end.Veiculos.Placa)
-                @Html.TextBoxFor(end => end.Veiculos.Placa)
-            </div>
-            @* Beneficios *@
-            <div class="row"></div>
-            <h3>Beneficios</h3>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(b => b.Beneficios.Horas_Veiculos)
-                @Html.CheckBoxFor(b => b.Beneficios.Horas_Veiculos)
-            </div>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(b => b.Beneficios.HorasAgregados)
-                @Html.CheckBoxFor(b => b.Beneficios.HorasAgregados)
-            </div>
-            <div class="form-group col-md-3">
-                @Html.LabelFor(b => b.Beneficios.Vidros)
-                @Html.CheckBoxFor(b => b.Beneficios.Vidros)
-            </div>
-            
-            <div class="row"></div>
 
-            
-            @*<input type="text" list="cidades" autocomplete="on">
-            <datalist id="cidades">
-                <option value="Brasília">
-                <option value="Rio de Janeiro">
-                <option value="São Paulo">
-            </datalist>*@
+            @using (Html.BeginForm("cadastrarClientes", "_admin", FormMethod.Post))
+            {
+                @Html.ValidationSummary()
+
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
+
+                    <div class="panel-heading" style="text-align:center">
+                        <div class="panel-body" style="border-radius:10px;">
+                            <div class="form-group row">
+                                @Html.LabelFor(cli => cli.Clientes.Nome, new { @class = "control-label col-md-1 paddingLabel TamanhowidthLabel", @style = "padding-top:5px;" })
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(cli => cli.Clientes.Nome, new { @class = "form-control col-md-12", @placeholder = "Informar o nome completo" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(cli => cli.Clientes.Cpf, new { @class = "control-label col-md-1 paddingLabel widthLabel", @style = "padding-top:5px;" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(cli => cli.Clientes.Cpf, new { @class = "form-control", @placeholder = "Informar CPF", @id = "Formatcpf" })
+                                </div>
+                                @Html.LabelFor(cli => cli.Clientes.Rg, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:3.333332%" })
+                                <div class="col-md-2">
+                                    @Html.TextBoxFor(cli => cli.Clientes.Rg, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(cli => cli.Clientes.DataNasci, new { @class = "control-label col-md-1", @style = "padding-top:5px;" })
+                                <div class="col-md-2">
+                                    @Html.TextBoxFor(cli => cli.Clientes.DataNasci, new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(cli => cli.Clientes.Cnh, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:3.333332%" })
+                                <div class="col-md-2">
+                                    @Html.TextBoxFor(cli => cli.Clientes.Cnh, new { @class = "form-control" })
+                                </div>
+                                @Html.LabelFor(cli => cli.Clientes.Email, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:5.1111133333%" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(cli => cli.Clientes.Email, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            <fieldset>
+                <legend>Endereço</legend>
+                <div class="panel-heading">
+                    <div class="panel-body" style="border-radius:10px;">
+                        <div class="form-group row">
+                            @Html.LabelFor(end => end.Endereco.Rua, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:3.333333333%" })
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(end => end.Endereco.Rua, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(end => end.Endereco.Quadra, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:5.33333%" })
+                            <div class="col-md-1">
+                                @Html.TextBoxFor(end => end.Endereco.Quadra, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(end => end.Endereco.Lote, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:3.33333%" })
+                            <div class="col-md-1">
+                                @Html.TextBoxFor(end => end.Endereco.Lote, new { @class = "form-control" })
+                            </div>
+                                @Html.LabelFor(end => end.Endereco.Bairro, new { @class = "control-label col-md-1", @style = "padding-top:5px;" })
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(end => end.Endereco.Bairro, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(end => end.Endereco.UF, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:2.333333%" })
+                            <div class="col-md-1" style="width:9.222222%;">
+                                @Html.EnumDropDownListFor(end => end.Endereco.UF, "UF", new { @class = "form-control" })
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Telefone</legend>
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        <div class="form-group row">
+                            @Html.LabelFor(end => end.Telefone.DDD, new { @class = "control-label" })
+                            <div class="col-md-1">
+                                @Html.TextBoxFor(end => end.Telefone.DDD, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(end => end.Telefone.Tel_Casa, new { @class = "control-label col-md-1" })
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(end => end.Telefone.Tel_Casa, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(end => end.Telefone.Tel_Celular, new { @class = "control-label col-md-1" })
+                            <div class="col-md2">
+                                @Html.TextBoxFor(end => end.Telefone.Tel_Celular, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(end => end.Telefone.Tel_Recado, new { @class = "control-label col-md-1" })
+                            <div class="col-md2">
+                                @Html.TextBoxFor(end => end.Telefone.Tel_Recado, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Veiculos</legend>
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        <div class="form-group row">
+                            @Html.LabelFor(end => end.Veiculos.Marca, new { @class = "control-label" })
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(end => end.Veiculos.Marca, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(end => end.Veiculos.Modelo,new { @class="control-label"})
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(end => end.Veiculos.Modelo,new { @class="form-control"})
+                            </div>
+                            @Html.LabelFor(end => end.Veiculos.Placa,new { @class="control-label"})
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(end => end.Veiculos.Placa,new { @class="form-control"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    Beneficicios
+                </legend>
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        @Html.LabelFor(b => b.Beneficios.Horas_Veiculos, new { @class="custom-control"})
+                        <div class="col-md-4">
+                            @Html.CheckBoxFor(b => b.Beneficios.Horas_Veiculos, new { @class="custom-control-input"})
+                        </div>
+                        @Html.LabelFor(b => b.Beneficios.HorasAgregados,new { @class="custom-control"})
+                        <div>
+                            @Html.CheckBoxFor(b => b.Beneficios.HorasAgregados,new { @class="custom-control-input"})
+                        </div>
+                        @Html.LabelFor(b => b.Beneficios.Vidros,new { @class="custom-control"})
+                        <div>
+                            @Html.CheckBoxFor(b => b.Beneficios.Vidros,new { @class="custom-control-input"})
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    Upload Imagens
+                </legend>
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        <div id="Uploader">
+                            
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
         <input value="Salvar" id="btnCli" type="submit" name="Salvar Cliente" />
-        </div>
         }
 
     @{ 
@@ -148,4 +185,3 @@
     }
     
     </div>
-    

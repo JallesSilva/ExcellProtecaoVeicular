@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using ExcellProtecaoVeicular.Model;
 using ExcellProtecaoVeicular.Data;
+using System.IO;
+using System.Web;
 
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 {
@@ -38,9 +40,18 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
                 clientes.IDCliente = crudCliente.CadastrarCliente(cadastrar, clientes);
                 crudCliente.CadastarVeiculos(cadastrar, clientes);
                 crudCliente.CadastrarBeneficios(cadastrar, clientes);
+                // Save imagens selecionadas.
+                for(int i=0;i<Request.Files.Count;i++)
+                {
+                    var imagem = Request.Files[i];  
+                    imagem.SaveAs(Path.Combine(Server.MapPath("~/App_Data/Imagens"),imagem.FileName));
+                }
+                
+                //crudCliente.CadastrarImagensCliente(cadastrar, clientes);
                 TempData["Mensagem"] = "Dados Salvo com sucesso";
                 Dispose(true);
-                return View();
+                return Json(new { sucess = true }, JsonRequestBehavior.AllowGet);
+                
             }
             catch (Exception)
             {
@@ -68,6 +79,34 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
             TempData["Cliente"] = cliente;
             return RedirectToAction("listarClientes");
         }
+
+        public ActionResult UploadImagem()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        [Authorize]
+        public ActionResult UploadImagem(ClienteViewModel cliente)
+        {
+            int arquivosSalvos = 0;
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase arquivo = Request.Files[i];
+
+                //Salva o arquivo
+                if(arquivo.ContentLength >0)
+                {
+                    var uploadPath = Server.MapPath("~/Content/Uploads");
+                    string caminhoArquivos = Path.Combine(uploadPath, Path.GetFileName(arquivo.FileName));
+                    arquivo.SaveAs(caminhoArquivos);
+                    arquivosSalvos++;
+                }
+            }
+            ViewData["Message"] = String.Format("{0} arquivo(s) salvos com sucesso.", arquivosSalvos);
+            return View("Upload");
+        }
+        
     }
 
     
