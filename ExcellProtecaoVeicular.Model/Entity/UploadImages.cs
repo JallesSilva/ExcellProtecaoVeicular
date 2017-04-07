@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ExcellProtecaoVeicular.Model.Entity
 {
@@ -13,5 +14,6 @@ namespace ExcellProtecaoVeicular.Model.Entity
         public int Tamanho { get; set; }
         public string tipo { get; set; }
         public string Caminho { get; set; }
+        public HttpPostedFile PostFile { get; set; }
     }
 }

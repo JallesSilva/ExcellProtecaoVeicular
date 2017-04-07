@@ -97,6 +97,10 @@
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RouteDebugger, Version=2.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\routedebugger.2.1.5\lib\net40\RouteDebugger.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -166,13 +170,16 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Areas\admin\Views\web.config" />
+    <Content Include="Areas\admin\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\admin\Views\_admin\Index.cshtml" />
     <Content Include="Areas\admin\Views\_admin\cadastrarClientes.cshtml" />
     <Content Include="Areas\admin\Views\_admin\listarClientes.cshtml" />
     <Content Include="Areas\admin\Views\_admin\UploadImagem.cshtml" />
+    <Content Include="Areas\admin\Views\_admin\Teste.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\24horas.png" />
     <Content Include="images\bg-map.png" />
@@ -285,7 +292,9 @@
     <Content Include="Scripts\scrolltoFixed.js" />
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\wow.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -313,7 +322,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -15,18 +15,34 @@
     <script src="~/Scripts/plupload/js/i18n/pt_BR.js"></script>*@
     <script src="~/Scripts/jquery.fileupload.js"></script>
     <script type="text/javascript">
-        $(document).read(function () {
-            $('#file').MultiFile({
-                accept: '*',
-                max: 3,
-                STRING: {
-                    removed: 'Remover',
-                    denied: 'Tipo do arquivo Inválido $ext!',
-                    duplicate:'Esse arquivo já foi selecionado: \n$file!'
+        var ClearPreview = function()
+        {
+            $("#imageBrowes").val('');
+            $("#descritpion").text('');
+            $("#imgPreview").hide();
+        }
+        var Uploadimage = function()
+        {
+            var file = $("#imageBrowes").get(0).files;
+            var data = new FormData;
+            data.append("ImageFile", file[0]);
+            data.append("ProductName", "SamsungAB");
+
+
+            $.ajax({
+                type: "Post",
+                url: "/Test/UploadImagem",
+                data: data,
+                contentType: false,
+                processData: false,
+                sucess: function (response)
+                {
+
                 }
             })
-        })
+        }
     </script>
+   
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

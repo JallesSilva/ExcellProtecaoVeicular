@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace ExcellProtecaoVeicular.Areas.admin
+namespace ExcellProtecaoVeicular.Web.Areas.admin
 {
     public class adminAreaRegistration : AreaRegistration 
     {
@@ -15,10 +15,11 @@ namespace ExcellProtecaoVeicular.Areas.admin
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "admin",
-                "admin/{controller}/{action}/{id}",
-                new { controller="Home", action = "Index", id = UrlParameter.Optional }
-            );
+                "Administrador",
+                "Administrador/{action}/{id}",
+                defaults: new { controller="_admin",action = "Index", id = UrlParameter.Optional }, namespaces: new[] {"ExcellProtecaoVeicular.Web.Areas.admin.Controllers" });
+            
+           
         }
     }
 }
