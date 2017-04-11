@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using ExcellProtecaoVeicular.Model;
-namespace ExcellProtecaoVeicular.Model
+using ExcellProtecaoVeicular.Model.Enum;
+namespace ExcellProtecaoVeicular.Model.Entity
 {
     public class Endereco
     {

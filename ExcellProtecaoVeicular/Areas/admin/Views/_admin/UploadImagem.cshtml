@@ -1,27 +1,17 @@
-﻿
-@{
-    ViewBag.Title = "UploadImagem";
+﻿@*@model ExcellProtecaoVeicular.Model.Entity.UploadImages*@
+
+
+@*@using (Html.BeginForm(null,null,FormMethod.Post, new { enctype = "multipart/form-data",@id= "imageform" }))
+{*@
+    <input class="btn btn-primary" type="file" name="photos[]" id="photoimg" value="Carregar" accept="image/jpg" multiple >
+    
+@*        <tr><td><input type="submit" name="Submit" value="upload"/></td></tr>*@
+  @*      <tr><td><div id='imageloadstatus' style='display:none'><img Name="Tela" src="loader.gif" alt="A carregar ..." /></div></td></tr>*@
+    
+
 }
 
-<div class="col-md-9">
-    <h2>UploadImagem</h2>
-
-    <div class="col-md-9">
-        <div class="btn btn-primary">
-            <input type="file" id="imageBrowes" />
-        </div>
-        <hr />
-
-        <div id="imgPreview" class="thumbnail" style="display:none">
-            <img class="img-responsive" id="targetImg" />
-            <div class="caption">
-                <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i></a>
-                <span id="description"></span>
-            </div>
-            <a href="#" class="btn btn-default" onclick="UploadImage()">Upload</a>
-        </div>
-    </div>
-    <div class="col-md-2 thumbnail" id="uploadedImage">
-
-    </div>
-</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/vendor/jquery.ui.widget.js"></script>
+<script src="js/jquery.iframe-transport.js"></script>
+<script src="js/jquery.fileupload.js"></script>

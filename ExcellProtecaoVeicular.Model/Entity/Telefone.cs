@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-namespace ExcellProtecaoVeicular.Model
+namespace ExcellProtecaoVeicular.Model.Entity
 {
     public class Telefone
     {

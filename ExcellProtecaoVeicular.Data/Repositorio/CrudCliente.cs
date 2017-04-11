@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
-using ExcellProtecaoVeicular.Model;
+using ExcellProtecaoVeicular.Model.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;

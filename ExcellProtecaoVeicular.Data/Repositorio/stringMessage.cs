@@ -1,5 +1,5 @@
 ﻿using System;
-using ExcellProtecaoVeicular.Model;
+using ExcellProtecaoVeicular.Model.Entity;
 namespace ExcellProtecaoVeicular.Data
 {
     public class stringMessages

@@ -1,7 +1,8 @@
-﻿using ExcellProtecaoVeicular.Model;
+﻿using ExcellProtecaoVeicular.Model.Entity;
 using ExcellProtecaoVeicular.Data;
 using System.Web.Mvc;
 using System.Web.Security;
+using ExcellProtecaoVeicular.Model.Enum;
 
 
 namespace ExcellProtecaoVeicular.Web.Controllers

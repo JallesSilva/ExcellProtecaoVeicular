@@ -1,4 +1,4 @@
-﻿@model ExcellProtecaoVeicular.Model.ClienteViewModel
+﻿@model ExcellProtecaoVeicular.Model.Entity.ClienteViewModel
 
 @{
     ViewBag.Title = "cadastrarClientes";
@@ -85,20 +85,16 @@
                 <div class="panel-heading">
                     <div class="panel-body">
                         <div class="form-group row">
-                            @Html.LabelFor(end => end.Telefone.DDD, new { @class = "control-label" })
-                            <div class="col-md-1">
-                                @Html.TextBoxFor(end => end.Telefone.DDD, new { @class = "form-control" })
-                            </div>
-                            @Html.LabelFor(end => end.Telefone.Tel_Casa, new { @class = "control-label col-md-1" })
+                            @Html.LabelFor(end => end.Telefone.Tel_Casa, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:7.333333%%" })
                             <div class="col-md-2">
                                 @Html.TextBoxFor(end => end.Telefone.Tel_Casa, new { @class = "form-control" })
                             </div>
-                            @Html.LabelFor(end => end.Telefone.Tel_Celular, new { @class = "control-label col-md-1" })
-                            <div class="col-md2">
+                            @Html.LabelFor(end => end.Telefone.Tel_Celular, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:7.333333%%" })
+                            <div class="col-md-2">
                                 @Html.TextBoxFor(end => end.Telefone.Tel_Celular, new { @class = "form-control" })
                             </div>
-                            @Html.LabelFor(end => end.Telefone.Tel_Recado, new { @class = "control-label col-md-1" })
-                            <div class="col-md2">
+                            @Html.LabelFor(end => end.Telefone.Tel_Recado, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:7.333333%%" })
+                            <div class="col-md-2">
                                 @Html.TextBoxFor(end => end.Telefone.Tel_Recado, new { @class = "form-control" })
                             </div>
                         </div>
@@ -110,17 +106,17 @@
                 <div class="panel-heading">
                     <div class="panel-body">
                         <div class="form-group row">
-                            @Html.LabelFor(end => end.Veiculos.Marca, new { @class = "control-label" })
+                            @Html.LabelFor(end => end.Veiculos.Marca, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:7.333333%%" })
                             <div class="col-md-2">
                                 @Html.TextBoxFor(end => end.Veiculos.Marca, new { @class = "form-control" })
                             </div>
-                            @Html.LabelFor(end => end.Veiculos.Modelo,new { @class="control-label"})
+                            @Html.LabelFor(end => end.Veiculos.Modelo, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:7.333333%%" })
                             <div class="col-md-2">
-                                @Html.TextBoxFor(end => end.Veiculos.Modelo,new { @class="form-control"})
+                                @Html.TextBoxFor(end => end.Veiculos.Modelo, new { @class = "form-control" })
                             </div>
-                            @Html.LabelFor(end => end.Veiculos.Placa,new { @class="control-label"})
+                            @Html.LabelFor(end => end.Veiculos.Placa, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:7.333333%%" })
                             <div class="col-md-2">
-                                @Html.TextBoxFor(end => end.Veiculos.Placa,new { @class="form-control"})
+                                @Html.TextBoxFor(end => end.Veiculos.Placa, new { @class = "form-control" })
                             </div>
                         </div>
                     </div>
@@ -132,29 +128,31 @@
                 </legend>
                 <div class="panel-heading">
                     <div class="panel-body">
-                        @Html.LabelFor(b => b.Beneficios.Horas_Veiculos, new { @class="custom-control"})
-                        <div class="col-md-4">
-                            @Html.CheckBoxFor(b => b.Beneficios.Horas_Veiculos, new { @class="custom-control-input"})
+                        @Html.LabelFor(b => b.Beneficios.Horas_Veiculos, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
+                        <div class="col-md-2">
+                            @Html.CheckBoxFor(b => b.Beneficios.Horas_Veiculos, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
                         </div>
-                        @Html.LabelFor(b => b.Beneficios.HorasAgregados,new { @class="custom-control"})
-                        <div>
-                            @Html.CheckBoxFor(b => b.Beneficios.HorasAgregados,new { @class="custom-control-input"})
+                        @Html.LabelFor(b => b.Beneficios.HorasAgregados, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
+                        <div class="col-md-2">
+                            @Html.CheckBoxFor(b => b.Beneficios.HorasAgregados, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
                         </div>
-                        @Html.LabelFor(b => b.Beneficios.Vidros,new { @class="custom-control"})
-                        <div>
-                            @Html.CheckBoxFor(b => b.Beneficios.Vidros,new { @class="custom-control-input"})
+                        @Html.LabelFor(b => b.Beneficios.Vidros, new { @class = "control-label col-md-1", @style = "width: 4.333333%;padding-top:5px;" })
+                        <div class="col-md-2">
+                            @Html.CheckBoxFor(b => b.Beneficios.Vidros, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
                         </div>
                     </div>
                 </div>
             </fieldset>
             <fieldset>
                 <legend>
-                    Upload Imagens
+                    Carregar Imagens
                 </legend>
                 <div class="panel-heading">
                     <div class="panel-body">
                         <div id="Uploader">
-                            
+                            @{
+                                Html.RenderPartial("UploadImagem");
+                              }
                         </div>
                     </div>
                 </div>

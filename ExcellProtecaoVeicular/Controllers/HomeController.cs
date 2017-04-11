@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.ComponentModel;
 using ExcellProtecaoVeicular.Data;
-using ExcellProtecaoVeicular.Model;
+using ExcellProtecaoVeicular.Model.Entity;
 
 namespace ExcellProtecaoVeicular.Web.Controllers
 {
