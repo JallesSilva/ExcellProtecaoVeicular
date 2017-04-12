@@ -8,7 +8,7 @@ namespace ExcellProtecaoVeicular.Web.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        [DisplayName("TestandoInicio")]
+        //[DisplayName("TestandoInicio")]
         public ActionResult Index()
         {
             return View();
