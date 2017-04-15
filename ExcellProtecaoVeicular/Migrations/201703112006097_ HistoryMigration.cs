@@ -1,4 +1,4 @@
-namespace ExcellProtecaoVeicular.Migrations
+namespace ExcellProtecaoVeicular.Web.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

@@ -9,8 +9,9 @@ namespace ExcellProtecaoVeicular.Model.Entity
         [Key]
         public int IDCliente { get; set; }
         public string Nome { get; set; }
-        public int Cpf { get; set; }
-        public int Rg { get; set; }
+        public string Cpf { get; set; }
+        public string Rg { get; set; }
+        [Display(Name ="Data de Nascimento")]
         public DateTime DataNasci { get; set; }
         public string Cnh { get; set; }
         public int? FK_Endereco { get; set; }

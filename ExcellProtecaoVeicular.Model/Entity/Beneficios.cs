@@ -12,11 +12,17 @@ namespace ExcellProtecaoVeicular.Model.Entity
         public int? FK_Cliente { get; set; }
         [ForeignKey("FK_Cliente")]
         public Clientes Cliente { get; set; }
+        [Display(Name ="Horas Veiculos")]
         public bool Horas_Veiculos { get; set; }
+        [Display(Name ="Horas Agregados")]
         public bool HorasAgregados { get; set; }
+        [Display(Name ="Vidros")]
         public bool Vidros { get; set; }
+        [Display(Name ="Carro Reserva")]
         public bool CarroReserva { get; set; }
+        [Display(Name ="Dias")]
         public EnumDias EnumDias { get; set; }
+        [Display(Name ="Fundo")]
         public EnumFundo EnumFundo { get; set; }
 
     }

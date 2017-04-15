@@ -1,9 +1,9 @@
-﻿using ExcellProtecaoVeicular.Model;
+﻿using ExcellProtecaoVeicular.Data.Context;
 using System.Linq;
 using System;
 using ExcellProtecaoVeicular.Model.Entity;
 using ExcellProtecaoVeicular.Model.Enum;
-namespace ExcellProtecaoVeicular.Data
+namespace ExcellProtecaoVeicular.Data.Repositorio
 {
     public class LoginRepositorio
     {

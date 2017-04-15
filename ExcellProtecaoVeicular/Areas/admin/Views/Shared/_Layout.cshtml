@@ -30,11 +30,11 @@
                                 CLIENTES<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("CADASTRO", "cadastrarClientes", "_admin")</li>
+                                <li>@Html.ActionLink("Cadastro de Clientes", "cadastrarClientes","Administrador")</li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">ALTERAR DADOS DO CLIENTE</a></li>
+                                @*<li><a href="#">ALTERAR DADOS DO CLIENTE</a></li>*@
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">LISTAR CLIENTES</a></li>
+                                <li>@Html.ActionLink("Listar Clientes","listarClientes","Administrador")</li>
                                 <li role="separator" class="divider"></li>                                
                                 @*<li class="dropdown-header">Nav header</li>
                                 <li><a href="#">Separated link</a></li>

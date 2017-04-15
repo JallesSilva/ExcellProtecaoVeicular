@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\RelacionamentoDados.cs" />
     <Compile Include="Entity\UploadImages.cs" />
     <Compile Include="Enum\EnumClientes.cs" />
     <Compile Include="Enum\EnumDias.cs" />

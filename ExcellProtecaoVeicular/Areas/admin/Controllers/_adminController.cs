@@ -1,88 +1,73 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.IO;
+using ExcellProtecaoVeicular.Data.Repositorio;
 using ExcellProtecaoVeicular.Model.Entity;
-using ExcellProtecaoVeicular.Data;
-using System.IO;
-using System.Web;
-using System.Linq;
-using System.Collections.Generic;
-
-
+using System.Web.Mvc;
+using System;
 
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 {
-    
-    
     public class _adminController : Controller
     {
-        CrudCliente crudCliente = null;
+        CrudCliente crudcliente = null;
 
-        [Authorize]        
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
-    
         [Authorize]
         public ActionResult cadastrarClientes()
         {
             return View();
         }
 
-        [HttpPost]
         [Authorize]
+        [HttpPost]
         public ActionResult cadastrarClientes(ClienteViewModel cadastrar)
         {
+            crudcliente = new CrudCliente();
+            crudcliente.CadastrarDados(cadastrar);
+            int count = 0;
             try
             {
-                crudCliente = new CrudCliente();
-                Clientes clientes = new Clientes();
-                clientes.FK_Telefone = crudCliente.CadastrarTelefone(cadastrar);
-                clientes.FK_Endereco = crudCliente.CadastrarEndereco(cadastrar);
-                clientes.IDCliente = crudCliente.CadastrarCliente(cadastrar, clientes);
-                crudCliente.CadastarVeiculos(cadastrar, clientes);
-                crudCliente.CadastrarBeneficios(cadastrar, clientes);
-                // Save imagens selecionadas.
                 foreach (string fileName in Request.Files)
                 {
-                    HttpPostedFileBase file = Request.Files[fileName];
-                    var extensao = file.FileName.Substring(file.FileName.Length,3);
-                    var fileNames = Path.GetFileName("IMG"+clientes.IDCliente+"."+extensao);
+                    count++;
+                    var  file = Request.Files[fileName];
+                    var extensao = Path.GetExtension(file.FileName);
+                    var fileNames = Path.GetFileName("IMG" + RelacionamentoDados.IDCliente+count +extensao);
                     var path = Path.Combine(Server.MapPath("~/App_Data"), fileNames);
                     file.SaveAs(path);
                 }
 
-                //crudCliente.CadastrarImagensCliente(cadastrar, clientes);
-                TempData["Mensagem"] = "Dados Salvo com sucesso";
-                Dispose(true);
-                return Json(new { sucess = true }, JsonRequestBehavior.AllowGet);
-                
+                return View();
             }
             catch (Exception)
             {
-                TempData["Mensagem de Erro"] = "Não foi possivel salvar alguns dados.";
 
-                return View();
+                throw new Exception("Error ao salvar as imagens");
             }
+
+            
+            
         }
 
         [Authorize]
         public ActionResult listarClientes(Clientes listar)
         {
-            crudCliente = new CrudCliente();
-            var lista = crudCliente.listarClientes();
+            crudcliente = new CrudCliente();
+            var lista = crudcliente.listarClientes();
+            Dispose(true);
             return View(lista);
-            
+
         }
 
         [Authorize]
         public ActionResult deletarClientes(int id)
         {
-            crudCliente = new CrudCliente();
-            var cliente = crudCliente.deletarCliente(id);
-            TempData["Cliente"] = cliente;
-            return RedirectToAction("listarClientes");
+
+            return View();
         }
 
         [Authorize]
@@ -91,29 +76,6 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
             return PartialView();
         }
 
-        [Authorize]
-        [HttpPost]
-        public virtual ActionResult UploadImagem(ClienteViewModel viewModel)
-        {
-            foreach (string fileName in Request.Files)
-            {
-
-                HttpPostedFileBase file = Request.Files[fileName];
-                    var fileNames = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/App_Data"), fileNames);
-                    file.SaveAs(path);
-            }
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult Teste()
-        {
-            return View("Teste");
-        }
-        
-        
         
     }
-
-    
 }

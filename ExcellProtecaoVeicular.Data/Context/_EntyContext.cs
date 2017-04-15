@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using ExcellProtecaoVeicular.Model.Entity;
-namespace ExcellProtecaoVeicular.Data
+namespace ExcellProtecaoVeicular.Data.Context
 {
     public class _EntyContext : DbContext
     {

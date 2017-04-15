@@ -7,16 +7,13 @@
 
 <div class="container">
     <div class="row" style="padding: 1px;"></div>
-    
-
-            @using (Html.BeginForm("cadastrarClientes", "_admin", FormMethod.Post))
+            @using (Html.BeginForm("", "", new { controller = "Administrador", action = "cadastrarClientes" }, FormMethod.Post,new { enctype = "multipart/form-data" }))
             {
-                @Html.ValidationSummary()
+                            @Html.ValidationSummary()
 
-                <fieldset>
-                    <legend>Dados Pessoais</legend>
-
-                    <div class="panel-heading" style="text-align:center">
+                            <fieldset>
+                                <legend> Dados Pessoais </legend>
+                                   <div class="panel-heading" style="text-align:center">
                         <div class="panel-body" style="border-radius:10px;">
                             <div class="form-group row">
                                 @Html.LabelFor(cli => cli.Clientes.Nome, new { @class = "control-label col-md-1 paddingLabel TamanhowidthLabel", @style = "padding-top:5px;" })
@@ -150,9 +147,7 @@
                 <div class="panel-heading">
                     <div class="panel-body">
                         <div id="Uploader">
-                            @{
-                                Html.RenderPartial("UploadImagem");
-                              }
+                            <input class="form-control" type="file" name="photos[]" id="photoimg" accept="image/jpg" multiple />
                         </div>
                     </div>
                 </div>
@@ -168,7 +163,7 @@
                 <h1>Alerta</h1>
             </div>
             <div class="alert alert-success" role="alert">
-                <strong>Informação</strong>@TempData["Mensagem"]
+                <strong>Informação: </strong>@TempData["Mensagem"]
             </div>
         }
         else if (TempData["Mensagem de Erro"] != null)
@@ -177,7 +172,7 @@
                 <h1>Alerta</h1>
             </div>
             <div class="alert alert-warning" role="alert">
-                <strong>Atenção</strong>@TempData["Mensagem de Erro"]
+                <strong>Atenção: </strong>@TempData["Mensagem de Erro"]
             </div>
         }
     }

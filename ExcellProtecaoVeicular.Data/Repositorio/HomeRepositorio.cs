@@ -1,5 +1,5 @@
 ﻿using System.Net.Mail;
-namespace ExcellProtecaoVeicular.Data
+namespace ExcellProtecaoVeicular.Data.Repositorio
 {
     public class HomeRepositorio
     {
