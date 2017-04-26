@@ -42,7 +42,7 @@ namespace ExcellProtecaoVeicular.Web.Controllers
                 return View();
 
             }
-            else if (usuarios.TipoUsuario == EnumTipoUsuario.administrador)
+            else if (usuarios.TipoUsuario == EnumTipoUsuario.Administrador)
             {
                 if(loginRepositorio.UsuarioAdministrador(usuarios))
                 {
@@ -58,7 +58,7 @@ namespace ExcellProtecaoVeicular.Web.Controllers
                 }
 
             }
-            else if(usuarios.TipoUsuario == EnumTipoUsuario.cliente)
+            else if(usuarios.TipoUsuario == EnumTipoUsuario.Cliente)
             {
                 if(loginRepositorio.UsuarioCliente(usuarios))
                 { 

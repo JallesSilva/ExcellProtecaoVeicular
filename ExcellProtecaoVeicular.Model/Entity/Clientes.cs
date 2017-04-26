@@ -12,6 +12,7 @@ namespace ExcellProtecaoVeicular.Model.Entity
         public string Cpf { get; set; }
         public string Rg { get; set; }
         [Display(Name ="Data de Nascimento")]
+        [Column(TypeName ="datetime2")]
         public DateTime DataNasci { get; set; }
         public string Cnh { get; set; }
         public int? FK_Endereco { get; set; }

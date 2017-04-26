@@ -7,7 +7,7 @@ namespace ExcellProtecaoVeicular.Web.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "ExcellProtecaoVeicular.Repositorio._EntyContext";
+            ContextKey = "ExcellProtecaoVeicular.Data.Context._EntyContext";
         }
 
         protected override void Seed(ExcellProtecaoVeicular.Data.Context._EntyContext context)

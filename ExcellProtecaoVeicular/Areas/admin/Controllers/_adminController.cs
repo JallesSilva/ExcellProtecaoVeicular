@@ -3,6 +3,7 @@ using ExcellProtecaoVeicular.Data.Repositorio;
 using ExcellProtecaoVeicular.Model.Entity;
 using System.Web.Mvc;
 using System;
+using System.Net;
 using System.Security.AccessControl;
 
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
@@ -27,10 +28,10 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
         [HttpPost]
         public ActionResult cadastrarClientes(ClienteViewModel cadastrar)
         {
-            crudcliente = new CrudCliente();
-            crudcliente.CadastrarDados(cadastrar);
+            //crudcliente = new CrudCliente();
+            //crudcliente.CadastrarDados(cadastrar);
             int count = 0;
-            
+
             try
             {
                 foreach (string fileName in Request.Files)
@@ -48,8 +49,9 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
                     }
                     else
                     {
-                        
-                        Directory.CreateDirectory(strCaminhoDiretorio);
+                        var request = FtpWebRequest.Create(string.Format("ftp.excellprotecaoveicular.com.br/{0}", RelacionamentoDados.IDCliente));
+                        request.Method = WebRequestMethods.Ftp.MakeDirectory;
+                        request.Credentials = new NetworkCredential("excellprotecaoveicular.com.br", "131126Japa@");                        
                         file.SaveAs(path);
                     }
                     
@@ -57,10 +59,10 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 
                 return View();
             }
-            catch (Exception)
+                catch (Exception ex)
             {
-
-                throw new Exception("Error ao salvar as imagens");
+                
+                throw new Exception("Error ao salvar as imagens" + ex.Message + " " + ex.InnerException);
             }
 
             

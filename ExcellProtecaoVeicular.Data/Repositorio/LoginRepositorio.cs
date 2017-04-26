@@ -15,7 +15,7 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             var Tipousuario = (from us in enty.Usuarios
                                where us.Login.Equals(user.Login) &&
                                us.password.Equals(user.password) &&
-                               EnumTipoUsuario.administrador == user.TipoUsuario
+                               EnumTipoUsuario.Administrador == user.TipoUsuario
                                select us).AsEnumerable();
             if (Tipousuario == null)
             {
@@ -30,12 +30,10 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             {
                 enty = new _EntyContext();
                 var Tipousuario = (from us in enty.Usuarios
-                                   where (us.Login == user.Login &&
-                                   us.password == user.password &&
-                                  us.TipoUsuario == user.TipoUsuario )
+                                   where us.Login.Equals(user.Login) &&
+                                   us.password.Equals(user.password) &&
+                                   us.TipoUsuario == EnumTipoUsuario.Administrador
                                    select us).AsEnumerable();
-
-
                 if (Tipousuario.Count() >0)
                 {
                     return true;
@@ -47,11 +45,9 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             {
 
                 enty.Dispose();
-                return false;
+                return false;               
                 
-                
-            }
-           
+            }           
         }
     }
 }

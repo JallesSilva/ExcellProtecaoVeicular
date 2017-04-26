@@ -245,9 +245,13 @@
     <Compile Include="Migrations\201703130354494_HistoryMigration2.Designer.cs">
       <DependentUpon>201703130354494_HistoryMigration2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704130040417_HistoryMigration3.cs" />
-    <Compile Include="Migrations\201704130040417_HistoryMigration3.Designer.cs">
-      <DependentUpon>201704130040417_HistoryMigration3.cs</DependentUpon>
+    <Compile Include="Migrations\201704261144173_HistoryMigration3.cs" />
+    <Compile Include="Migrations\201704261144173_HistoryMigration3.Designer.cs">
+      <DependentUpon>201704261144173_HistoryMigration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704261245150_History4.cs" />
+    <Compile Include="Migrations\201704261245150_History4.Designer.cs">
+      <DependentUpon>201704261245150_History4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -302,8 +306,11 @@
     <EmbeddedResource Include="Migrations\201703130354494_HistoryMigration2.resx">
       <DependentUpon>201703130354494_HistoryMigration2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704130040417_HistoryMigration3.resx">
-      <DependentUpon>201704130040417_HistoryMigration3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704261144173_HistoryMigration3.resx">
+      <DependentUpon>201704261144173_HistoryMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704261245150_History4.resx">
+      <DependentUpon>201704261245150_History4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

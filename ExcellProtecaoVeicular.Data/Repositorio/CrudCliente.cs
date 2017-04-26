@@ -114,48 +114,50 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
 
         public void CadastrarDados(ClienteViewModel DadosViewModel)
         {   
+            
             RelacionamentoDados.FKTelefone = CadastrarTelefone(DadosViewModel.Telefone);
             RelacionamentoDados.FKEndereco = CadastrarEndereco(DadosViewModel.Endereco);
-            DadosViewModel.Clientes.Cpf = DadosViewModel.Clientes.Cpf.Replace('-', ' ').Replace('.', ' ');
+            DadosViewModel.Clientes.Cpf = DadosViewModel.Clientes.Cpf.Replace("-", "").Replace(".", "");            
             CadastrarCliente(DadosViewModel.Clientes);
             CadastarVeiculos(DadosViewModel.Veiculos);
             CadastrarBeneficios(DadosViewModel.Beneficios);
+            enty.Dispose();
             
         }
 
         public Clientes deletarCliente(int id)
         {
-            Clientes cliente = enty.Clientes.First(c => c.IDCliente == id);
-            Telefone telefone = enty.Telefone.First(c => c.IDTelefone == cliente.FK_Telefone);
-            Endereco endereco = enty.Endereco.First(c => c.IDEndereco == cliente.FK_Endereco);
-            IQueryable<Veiculos> veiculos = enty.Veiculos.Where(c => c.FK_Clientes == cliente.IDCliente);
-            IQueryable<Beneficios> beneficios = enty.Beneficios.Where(c => c.FK_Cliente == cliente.IDCliente);
-            enty.Endereco.Remove(endereco);
-            enty.Telefone.Remove(telefone);
-            
-            string strDiretorio = Path.Combine("~/App_Data/Imagens/"+cliente.IDCliente);
+                Clientes cliente = enty.Clientes.First(c => c.IDCliente == id);
+                Telefone telefone = enty.Telefone.First(c => c.IDTelefone == cliente.FK_Telefone);
+                Endereco endereco = enty.Endereco.First(c => c.IDEndereco == cliente.FK_Endereco);
+                IQueryable<Veiculos> veiculos = enty.Veiculos.Where(c => c.FK_Clientes == cliente.IDCliente);
+                IQueryable<Beneficios> beneficios = enty.Beneficios.Where(c => c.FK_Cliente == cliente.IDCliente);
+                enty.Endereco.Remove(endereco);
+                enty.Telefone.Remove(telefone);
 
-            foreach (var veiculo in veiculos)
-            {
-                enty.Veiculos.Remove(veiculo);
-            
-            }
-            foreach (var beneficio in beneficios)
-            {
-            
-                enty.Beneficios.Remove(beneficio);
-                enty.Clientes.Remove(cliente);
-                enty.SaveChanges();
-            }
-            if (File.Exists(strDiretorio))
-            {
-                File.Delete(strDiretorio);
-            }
-            else
-                enty.SaveChanges();
+                string strDiretorio = Path.Combine("~/App_Data/Imagens/" + cliente.IDCliente);
 
-            return cliente;
-            
+                foreach (var veiculo in veiculos)
+                {
+                    enty.Veiculos.Remove(veiculo);
+
+                }
+                foreach (var beneficio in beneficios)
+                {
+
+                    enty.Beneficios.Remove(beneficio);
+                    enty.Clientes.Remove(cliente);
+                    enty.SaveChanges();
+                }
+                if (File.Exists(strDiretorio))
+                {
+                    File.Delete(strDiretorio);
+                }
+                else
+                    enty.SaveChanges();
+                    enty.Dispose(); 
+                    return cliente; 
+
         }
     }
 }
