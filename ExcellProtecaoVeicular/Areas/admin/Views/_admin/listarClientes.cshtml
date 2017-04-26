@@ -4,6 +4,8 @@
     ViewBag.Title = "Listar Clientes";
 }
 
+<div id="divexcluir"></div>
+
 <h2>Lista de Clientes Cadastrados - Quantidade de Clientes @Model.Count()</h2>
 <div class="form-group row">
     <div class="col-md-6">
@@ -11,110 +13,79 @@
     </div>
     <div class="col-md-4">
         <button type="button" class="btn btn-default" aria-label="Left Align" style="margin-right:10%" id="reload" value="Atualizar Pagina">
-            <span class="glyphicon glyphicon-repeat"></span>
+            Atualizar <span class="glyphicon glyphicon-repeat"></span>
         </button>
     </div>
 </div>
-    <table class="table" style="margin-top:10px">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cpf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rg)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataNasci)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cnh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-        </tr>
+<table class="table" style="margin-top:10px">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNasci)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+    </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr id="listItens">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cpf)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataNasci)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cnh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IDCliente }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IDCliente }) |
-                    @*@Html.ActionLink("Deletar", "deletarClientes",new { id=item.IDCliente},new { @class = "excluir"})*@
-                    <a href="/Administrador/deletarClientes/@item.IDCliente" data-toggle="modal" data-target=".bs-example-modal-sm" class="open-AddBookDialog">Delete</a>
-                </td>
-            </tr>
-            }
-    </table>
-@foreach (var item in Model)
-{
-    using (Html.BeginForm("", "", new { controller = "Administrador", action = "deletarClientes", id = item.IDCliente }, FormMethod.Post))
+    @foreach (var item in Model)
     {
-
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <p>Você Deseja excluir esse cliente ? </p>
-                    <h4>Número de identificação do cliente: (<b>@item.IDCliente</b>) Nome: @item.Nome </h4>
-                    <div class="form-group">
-                        <div class="col-md-2">
-                            <button class="btn btn-danger" id="btnDelete">Excluir</button>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-success" id="btnClose">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <tr id="row-@item.IDCliente">
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNasci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cnh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDCliente }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IDCliente }) |
+                @*@Html.ActionLink("Deletar", "deletarClientes",new { id=item.IDCliente},new { @class = "excluir"})*@
+                <input type="submit" class="btn btn-default btn-xs" id="@item.IDCliente" name="@item.Nome" value="Excluir"/>
+            </td>
+        </tr>
     }
-}
+</table>
 
+@Html.Partial("SectionModalExcluir")
 <script type="text/javascript">
-    $(document).ready(function () {
-        $(".open-AddBookDialog").click(function () {
-            $('#bookId').val($(this).data('id'));
-            $('#addBookDialog').modal('show');
+    $(function () {
+        $("#reload").click(function () {
+            location.reload();
         });
-    });
-</script>
 
-    <script type="text/javascript">
-        $(function(){
-            $("#reload").click(function(){
-                location.reload();
-            });
-
-            //$("#txtBusca").keyup(function(){
-            //    var texto = $(this).val();
-            //    $("#listItens td").css("visibility", "hidden");
-            //    $("#listItens td").each(function () {
-            //        if($(this).text().indexOf(texto) < 0)
-            //            $(this).css("display", "table-cell");
+        //$("#txtBusca").keyup(function(){
+        //    var texto = $(this).val();
+        //    $("#listItens td").css("visibility", "hidden");
+        //    $("#listItens td").each(function () {
+        //        if($(this).text().indexOf(texto) < 0)
+        //            $(this).css("display", "table-cell");
 
 
         //});
-        });
-        
-    </script>
+    });
+
+</script>

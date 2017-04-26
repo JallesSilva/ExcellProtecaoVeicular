@@ -14,7 +14,7 @@ namespace ExcellProtecaoVeicular.Data.Repositorio.IRepositorio
         //void CadastrarBeneficios(Beneficios beneficios,RelacionamentoDados relacionamentoDeDados);
         //int CadastrarTelefone(Telefone telefone);
         //Deletar
-        void deletarCliente(Clientes cliente);
+        Clientes deletarCliente(int id);
         List<Clientes> listarClientes();
         
     }

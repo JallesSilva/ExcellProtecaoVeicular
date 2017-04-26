@@ -76,13 +76,19 @@
                  @if (TempData["MensagemSucesso"] != null)
                  {
                     <div class="alert alert-success" role="alert">
-                        <strong>Enviado !!</strong> Envio realizado com sucesso, em breve entramos em contato.
+                        <strong>Enviado com sucesso!!</strong><br/> @TempData["MensagemSucesso"]
                     </div>
                  }
                  else if (TempData["MensagemError"] != null)
                  {
                     <div class="alert alert-danger" role="alert">
-                        <strong>Sorry !</strong> O e-mail não foi enviado.
+                        <strong>Desculpe !</strong><br />@TempData["MensagemError"]
+                    </div>
+                 }
+                 else if (TempData["FalseModelState"] != null)
+                 {
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Erro !</strong> <br />@TempData["FalseModelState"]
                     </div>
                  }
 

@@ -8,7 +8,7 @@ namespace ExcellProtecaoVeicular.Web.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        [DisplayName("TestandoInicio")]
+        
         public ActionResult Index()
         {
             return View();
@@ -34,9 +34,6 @@ namespace ExcellProtecaoVeicular.Web.Controllers
         {
             return PartialView();
         }
-
-        
-        
         public ActionResult Contato()
         {
             return PartialView();
@@ -50,20 +47,25 @@ namespace ExcellProtecaoVeicular.Web.Controllers
                 try
                 {
                     HomeRepositorio repositorio = new HomeRepositorio();
-                    repositorio.SetEmail("SemPath", "brendon.genssinger@gmail.com","Site - Excell Proteção Veicular.");
-                    //excellprotecaoveicular@hotmail.com
-                    TempData["MensagemSucesso"] = "Envio com sucesso";
-                    return PartialView();
+                    repositorio.SetEmail("SemPath", "brendon.genssinger@gmail.com", "Site - Excell Proteção Veicular.", _objEmail);
+                    TempData["MensagemSucesso"] = "Envio realizado com sucesso, em breve nossos consultores entrará em contato.";
+                    _objEmail = null;
+                    Dispose(true);
+                    //ModelState.Clear();
+                    return Redirect("/Home/#contact");
                 }
                 catch (System.Exception)
                 {
-                    TempData["MensagemError"] = "Mensagem não enviada";
-                    return PartialView();
+                    TempData["MensagemError"] = "Mensagem não enviada, tente novamente ou contate a empresa Excell Proteção Veicular.";
+                    return Redirect("/Home/#contact");
                 }
                 
+            }else
+            {
+                TempData["FalseModelState"] = "Possui algumas inconsistências de dados, por favor verificar.";
+                return Redirect("/Home/#contact");
             }
-            return View("Index"); 
-          }
+        }
 
         public ActionResult PaginaError()
         {

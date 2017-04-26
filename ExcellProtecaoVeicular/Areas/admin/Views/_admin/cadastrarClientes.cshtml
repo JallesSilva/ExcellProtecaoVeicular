@@ -28,13 +28,13 @@
                                 </div>
                                 @Html.LabelFor(cli => cli.Clientes.Rg, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:3.333332%" })
                                 <div class="col-md-2">
-                                    @Html.TextBoxFor(cli => cli.Clientes.Rg, new { @class = "form-control" })
+                                    @Html.TextBoxFor(cli => cli.Clientes.Rg, new { @class = "form-control",@id="FormatApenasNumbers" })
                                 </div>
                             </div>
                             <div class="form-group row">
                                 @Html.LabelFor(cli => cli.Clientes.DataNasci, new { @class = "control-label col-md-1", @style = "padding-top:5px;" })
                                 <div class="col-md-2">
-                                    @Html.TextBoxFor(cli => cli.Clientes.DataNasci, new { @class = "form-control" })
+                                    @Html.TextBoxFor(cli => cli.Clientes.DataNasci, new { @class = "form-control",@placehorder="Informar o RG" })
                                 </div>
                                 @Html.LabelFor(cli => cli.Clientes.Cnh, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:3.333332%" })
                                 <div class="col-md-2">
@@ -42,7 +42,7 @@
                                 </div>
                                 @Html.LabelFor(cli => cli.Clientes.Email, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:5.1111133333%" })
                                 <div class="col-md-4">
-                                    @Html.TextBoxFor(cli => cli.Clientes.Email, new { @class = "form-control" })
+                                    @Html.TextBoxFor(cli => cli.Clientes.Email, new { @class = "form-control",@id="inputEmail" })
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                             @Html.LabelFor(end => end.Endereco.UF, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:2.333333%" })
                             <div class="col-md-1" style="width:9.222222%;">
                                 @Html.EnumDropDownListFor(end => end.Endereco.UF, "UF", new { @class = "form-control" })
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
         <input value="Salvar" id="btnCli" type="submit" name="Salvar Cliente" />
         }
 
-    @{ 
+    @{
         if(TempData["Mensagem"]!=null)
         {
 
@@ -176,5 +176,5 @@
             </div>
         }
     }
-    
+
     </div>

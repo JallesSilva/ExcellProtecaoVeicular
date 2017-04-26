@@ -21,17 +21,17 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             enty = new _EntyContext();            
         }
         //Cadastrar
-        private void CadastrarCliente(Clientes cliente)
+        private void CadastrarCliente(Clientes clientes)
         {  
             try
             {                
-                enty.Clientes.Add(cliente);
+                enty.Clientes.Add(clientes);
                 enty.SaveChanges();
-                cliente.FK_Endereco = RelacionamentoDados.FKEndereco;
-                cliente.FK_Telefone = RelacionamentoDados.FKTelefone;
-                enty.Clientes.Attach(cliente);
-                enty.Entry(cliente).State = EntityState.Modified;
-                RelacionamentoDados.IDCliente =  cliente.IDCliente;
+                clientes.FK_Endereco = RelacionamentoDados.FKEndereco;
+                clientes.FK_Telefone = RelacionamentoDados.FKTelefone;
+                enty.Clientes.Attach(clientes);
+                enty.Entry(clientes).State = EntityState.Modified;
+                RelacionamentoDados.IDCliente = clientes.IDCliente;
                 enty.SaveChanges();
             }
             catch (Exception)
@@ -116,15 +116,46 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
         {   
             RelacionamentoDados.FKTelefone = CadastrarTelefone(DadosViewModel.Telefone);
             RelacionamentoDados.FKEndereco = CadastrarEndereco(DadosViewModel.Endereco);
+            DadosViewModel.Clientes.Cpf = DadosViewModel.Clientes.Cpf.Replace('-', ' ').Replace('.', ' ');
             CadastrarCliente(DadosViewModel.Clientes);
             CadastarVeiculos(DadosViewModel.Veiculos);
             CadastrarBeneficios(DadosViewModel.Beneficios);
             
         }
 
-        public void deletarCliente(Clientes cliente)
+        public Clientes deletarCliente(int id)
         {
-            throw new NotImplementedException();
+            Clientes cliente = enty.Clientes.First(c => c.IDCliente == id);
+            Telefone telefone = enty.Telefone.First(c => c.IDTelefone == cliente.FK_Telefone);
+            Endereco endereco = enty.Endereco.First(c => c.IDEndereco == cliente.FK_Endereco);
+            IQueryable<Veiculos> veiculos = enty.Veiculos.Where(c => c.FK_Clientes == cliente.IDCliente);
+            IQueryable<Beneficios> beneficios = enty.Beneficios.Where(c => c.FK_Cliente == cliente.IDCliente);
+            enty.Endereco.Remove(endereco);
+            enty.Telefone.Remove(telefone);
+            
+            string strDiretorio = Path.Combine("~/App_Data/Imagens/"+cliente.IDCliente);
+
+            foreach (var veiculo in veiculos)
+            {
+                enty.Veiculos.Remove(veiculo);
+            
+            }
+            foreach (var beneficio in beneficios)
+            {
+            
+                enty.Beneficios.Remove(beneficio);
+                enty.Clientes.Remove(cliente);
+                enty.SaveChanges();
+            }
+            if (File.Exists(strDiretorio))
+            {
+                File.Delete(strDiretorio);
+            }
+            else
+                enty.SaveChanges();
+
+            return cliente;
+            
         }
     }
 }

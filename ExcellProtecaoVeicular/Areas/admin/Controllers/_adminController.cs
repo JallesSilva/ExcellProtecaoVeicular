@@ -3,6 +3,7 @@ using ExcellProtecaoVeicular.Data.Repositorio;
 using ExcellProtecaoVeicular.Model.Entity;
 using System.Web.Mvc;
 using System;
+using System.Security.AccessControl;
 
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 {
@@ -29,6 +30,7 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
             crudcliente = new CrudCliente();
             crudcliente.CadastrarDados(cadastrar);
             int count = 0;
+            
             try
             {
                 foreach (string fileName in Request.Files)
@@ -37,8 +39,20 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
                     var  file = Request.Files[fileName];
                     var extensao = Path.GetExtension(file.FileName);
                     var fileNames = Path.GetFileName("IMG" + RelacionamentoDados.IDCliente+count +extensao);
-                    var path = Path.Combine(Server.MapPath("~/App_Data"), fileNames);
-                    file.SaveAs(path);
+                    var strCaminhoDiretorio = "~/App_Data/Imagens/" + RelacionamentoDados.IDCliente;
+                    var path = Path.Combine(Server.MapPath(strCaminhoDiretorio), fileNames);
+                    //DirectoryInfo directory = new DirectoryInfo(strCaminhoDiretorio);
+                    if (Directory.Exists(strCaminhoDiretorio))
+                    {   
+                        file.SaveAs(path);
+                    }
+                    else
+                    {
+                        
+                        Directory.CreateDirectory(strCaminhoDiretorio);
+                        file.SaveAs(path);
+                    }
+                    
                 }
 
                 return View();
@@ -64,15 +78,20 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
         }
 
         [Authorize]
-        public ActionResult deletarClientes(int id)
+        [HttpPost]
+        public JsonResult deletarClientes(int IDCliente)
         {
-
-            return View();
+            CrudCliente exclusao = new CrudCliente();
+            Clientes cliente = exclusao.deletarCliente(IDCliente);
+            return Json(string.Format("Cliente excluido com sucesso! Nome: {0} Número de identificação: {1}",cliente.Nome,cliente.IDCliente,JsonRequestBehavior.AllowGet));
         }
+
+
 
         [Authorize]
         public ActionResult UploadImagem()
         {
+            
             return PartialView();
         }
 
