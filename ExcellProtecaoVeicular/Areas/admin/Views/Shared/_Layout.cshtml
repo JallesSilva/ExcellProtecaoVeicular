@@ -70,18 +70,18 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            @Html.ActionLink("Excell Protecao Veicular", "Index", "Administrador", new { @class = "navbar-brand" })
+                            @Html.ActionLink("Excell Protecao Veicular", "Index")
                         </li>                        
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 CLIENTES<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Cadastro de Clientes", "cadastrarClientes","Administrador")</li>
+                                <li>@Html.ActionLink("Cadastro de Clientes","cadastrarClientes")</li>
                                 <li role="separator" class="divider"></li>
                                 @*<li><a href="#">ALTERAR DADOS DO CLIENTE</a></li>*@
-                                <li role="separator" class="divider"></li>
-                                <li>@Html.ActionLink("Listar Clientes","listarClientes","Administrador",new { area="admin"})</li>
+                                @*<li role="separator" class="divider"></li>*@
+                                <li>@Html.ActionLink("Listar Clientes","listarClientes")</li>
                                 <li role="separator" class="divider"></li>                                
                                 @*<li class="dropdown-header">Nav header</li>
                                 <li><a href="#">Separated link</a></li>
