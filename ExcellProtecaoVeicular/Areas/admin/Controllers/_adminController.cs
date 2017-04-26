@@ -1,74 +1,100 @@
-﻿using System;
+﻿using System.IO;
+using ExcellProtecaoVeicular.Data.Repositorio;
+using ExcellProtecaoVeicular.Model.Entity;
 using System.Web.Mvc;
-using ExcellProtecaoVeicular.Model;
-using ExcellProtecaoVeicular.Data;
+using System;
+using System.Security.AccessControl;
 
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 {
-    
-    [RoutePrefix("Administrador")]
     public class _adminController : Controller
     {
-        CrudCliente crudCliente = null;
+        CrudCliente crudcliente = null;
 
-        [Authorize]        
-        [Route("Inicio")]        
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
-        [Route("Cadastro")]
         [Authorize]
         public ActionResult cadastrarClientes()
         {
             return View();
         }
 
-        [HttpPost]
         [Authorize]
+        [HttpPost]
         public ActionResult cadastrarClientes(ClienteViewModel cadastrar)
         {
+            crudcliente = new CrudCliente();
+            crudcliente.CadastrarDados(cadastrar);
+            int count = 0;
+            
             try
             {
-                crudCliente = new CrudCliente();
-                Clientes clientes = new Clientes();
-                clientes.FK_Telefone = crudCliente.CadastrarTelefone(cadastrar);
-                clientes.FK_Endereco = crudCliente.CadastrarEndereco(cadastrar);
-                clientes.IDCliente = crudCliente.CadastrarCliente(cadastrar, clientes);
-                crudCliente.CadastarVeiculos(cadastrar, clientes);
-                crudCliente.CadastrarBeneficios(cadastrar, clientes);
-                TempData["Mensagem"] = "Dados Salvo com sucesso";
-                Dispose(true);
+                foreach (string fileName in Request.Files)
+                {
+                    count++;
+                    var  file = Request.Files[fileName];
+                    var extensao = Path.GetExtension(file.FileName);
+                    var fileNames = Path.GetFileName("IMG" + RelacionamentoDados.IDCliente+count +extensao);
+                    var strCaminhoDiretorio = "~/App_Data/Imagens/" + RelacionamentoDados.IDCliente;
+                    var path = Path.Combine(Server.MapPath(strCaminhoDiretorio), fileNames);
+                    //DirectoryInfo directory = new DirectoryInfo(strCaminhoDiretorio);
+                    if (Directory.Exists(strCaminhoDiretorio))
+                    {   
+                        file.SaveAs(path);
+                    }
+                    else
+                    {
+                        
+                        Directory.CreateDirectory(strCaminhoDiretorio);
+                        file.SaveAs(path);
+                    }
+                    
+                }
+
                 return View();
             }
             catch (Exception)
             {
-                TempData["Mensagem de Erro"] = "Não foi possivel salvar alguns dados.";
 
-                return View();
+                throw new Exception("Error ao salvar as imagens");
             }
+
+            
+            
         }
 
         [Authorize]
         public ActionResult listarClientes(Clientes listar)
         {
-            crudCliente = new CrudCliente();
-            var lista = crudCliente.listarClientes();
+            crudcliente = new CrudCliente();
+            var lista = crudcliente.listarClientes();
+            Dispose(true);
             return View(lista);
-            
+
         }
-        
 
         [Authorize]
-        public ActionResult deletarClientes(int id)
+        [HttpPost]
+        public JsonResult deletarClientes(int IDCliente)
         {
-            crudCliente = new CrudCliente();
-            var cliente = crudCliente.deletarCliente(id);
-            TempData["Cliente"] = cliente;
-            return RedirectToAction("listarClientes");
+            CrudCliente exclusao = new CrudCliente();
+            Clientes cliente = exclusao.deletarCliente(IDCliente);
+            return Json(string.Format("Cliente excluido com sucesso! Nome: {0} Número de identificação: {1}",cliente.Nome,cliente.IDCliente,JsonRequestBehavior.AllowGet));
         }
-    }
 
-    
+
+
+        [Authorize]
+        public ActionResult UploadImagem()
+        {
+            
+            return PartialView();
+        }
+
+        
+    }
 }

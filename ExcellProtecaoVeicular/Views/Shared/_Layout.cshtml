@@ -1,13 +1,22 @@
-﻿<!DOCTYPE html>
-<html>
-<head>   
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Excell Proteção Veicular</title>   
-        @Styles.Render("~/bundles/css")
+    <title>@ViewBag.Title - Excell Proteção Veicular</title>    
+    <meta name="description" content="Excell Proteção Veicular, aqui você o seguro perfeito para o seu carro.
+          Temos ótimos benefícios, seguro garantido, 24 horas, ligue para algum de nossos consultores e agende algum horário." />
+    <meta  name="keywords" content="seguro, proteção veicular, excell seguradora, excell proteção veicular, excell, seguro veicular," />
+    
+        @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryvalidate")
         @Scripts.Render("~/bundles/jqueryMaskedInput")
+        @Scripts.Render("~/bundles/bootstrap")
+        
 </head>
 <body>      
     

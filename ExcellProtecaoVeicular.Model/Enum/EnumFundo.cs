@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ExcellProtecaoVeicular.Model
+namespace ExcellProtecaoVeicular.Model.Enum
 {
     public enum EnumFundo
     {

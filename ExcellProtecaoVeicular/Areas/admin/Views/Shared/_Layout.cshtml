@@ -1,12 +1,62 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryvalidate")
+    @Scripts.Render("~/bundles/jqueryMaskedInput")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        function soNums(e) {
+
+            //teclas adicionais permitidas (tab,delete,backspace,setas direita e esquerda)
+            keyCodesPermitidos = new Array(8, 9, 37, 39, 46);
+
+            //numeros e 0 a 9 do teclado alfanumerico
+            for (x = 48; x <= 57; x++) {
+                keyCodesPermitidos.push(x);
+            }
+
+            //numeros e 0 a 9 do teclado numerico
+            for (x = 96; x <= 105; x++) {
+                keyCodesPermitidos.push(x);
+            }
+
+            //Pega a tecla digitada
+            keyCode = e.which;
+
+            //Verifica se a tecla digitada é permitida
+            if ($.inArray(keyCode, keyCodesPermitidos) != -1) {
+                return true;
+            }
+            return false;
+        }
+    $(function () {
+        $("#Formatcpf").mask("999.999.999-99");
+        $("#Clientes_DataNasci").mask("99/99/9999");
+        $('#Clientes_Rg').bind('keydown', soNums);
+        $('#Clientes_Cnh').bind('keydown', soNums);
+
+        $("#telefoneMask")
+        .mask("(99) 9999-9999?9")
+        .focusout(function (event) {
+            var target, phone, element;
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+            phone = target.value.replace(/\D/g, '');
+            element = $(target);
+            element.unmask();
+            if (phone.length > 10) {
+                element.mask("(99) 99999-999?9");
+            } else {
+                element.mask("(99) 9999-9999?9");
+            }
+        });
+    });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,21 +70,22 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            @Html.ActionLink("Excell Protecao Veicular", "Index", "Home", new { area = "admin" }, new { @class = "navbar-brand" })
-                        </li>
-                        <li>
-                            @Html.ActionLink("Cadastrar Cliente", "cadastrarClientes", "_admin", new { Area = "admin" }, null);
-                        </li>
+                            @Html.ActionLink("Excell Protecao Veicular", "Index", "Administrador", new { @class = "navbar-brand" })
+                        </li>                        
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                CLIENTES<span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li>@Html.ActionLink("Cadastro de Clientes", "cadastrarClientes","Administrador")</li>
                                 <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
+                                @*<li><a href="#">ALTERAR DADOS DO CLIENTE</a></li>*@
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Listar Clientes","listarClientes","Administrador",new { area="admin"})</li>
+                                <li role="separator" class="divider"></li>                                
+                                @*<li class="dropdown-header">Nav header</li>
                                 <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>*@
                             </ul>
                         </li>
                       </ul>
@@ -43,15 +94,13 @@
     </div>
 </div>
 
-    <div class="container body-content">
+    <div class="container body-content" style="margin-top:52px;">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - DESENVOLVEDOR BRENDON GENSSINGER <br />
+            CONTATO: (62) 99102 - 9827</p>
         </footer>
     </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

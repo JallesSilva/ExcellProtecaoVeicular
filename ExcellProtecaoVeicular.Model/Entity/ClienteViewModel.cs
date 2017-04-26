@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace ExcellProtecaoVeicular.Model
+﻿using System.Web;
+namespace ExcellProtecaoVeicular.Model.Entity
 {
     public class ClienteViewModel
     {
@@ -12,6 +8,6 @@ namespace ExcellProtecaoVeicular.Model
         public Endereco Endereco { get; set; }
         public Telefone Telefone { get; set; }
         public Veiculos Veiculos { get; set; }
-
+        
     }
 }

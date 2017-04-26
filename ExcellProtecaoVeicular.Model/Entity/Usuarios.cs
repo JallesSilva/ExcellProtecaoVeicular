@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ExcellProtecaoVeicular.Model.Enum;
 
-namespace ExcellProtecaoVeicular.Model
+namespace ExcellProtecaoVeicular.Model.Entity
 {
     public class Usuarios
     {

@@ -15,9 +15,11 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "admin",
-                "admin/{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "ExcellProtecaoVeicular.Web.Areas.admin.Controllers" });
+                "Administrador",
+                "Administrador/{action}/{id}",
+                defaults: new { controller="_admin",action = "Index", id = UrlParameter.Optional }, namespaces: new[] {"ExcellProtecaoVeicular.Web.Areas.admin.Controllers" });
+            
+           
         }
     }
 }

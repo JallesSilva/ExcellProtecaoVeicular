@@ -401,11 +401,11 @@ img {
 
 /* Clients
 ---------------------------------*/
-.client-part{
-	background:url(../img/section-bg1.jpg) center center no-repeat;
-	background-size:cover;
-	padding:55px 0;
-	text-align:center;
+.client-part {
+    background: url(../App_Data/Imagens/section-bg1.jpg) center center no-repeat;
+    background-size: cover;
+    padding: 55px 0;
+    text-align: center;
 }
 .client-part-haead{
 	color:#fdfdfd;
@@ -892,4 +892,14 @@ border: 2px solid #fff;
 
 }
 
+/*Padding Label*/
+.paddingLabel
+{
+    padding-top:5px;
+}
 
+/*Width Label*/
+.TamanhowidthLabel
+{
+    width:5.33333333%;
+}

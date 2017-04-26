@@ -1,11 +1,11 @@
-﻿@model ExcellProtecaoVeicular.Model.Usuarios
+﻿@model ExcellProtecaoVeicular.Model.Entity.Usuarios
 
 @{
     ViewBag.Title = "Login";
 
 }
-<div style="align-items:center">
-    <h4>ACESSO RESTRITO</h4>
+<div>
+    <h4 style="text-align:center;margin-top:25px;text-decoration:solid">ACESSO RESTRITO</h4>
     <hr />
 
     <div class="container" style="margin-top:0 auto;">
@@ -13,23 +13,22 @@
         @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-horizontal" ,@style = "margin-left:30%;"} ))
         {
 
-            @Html.ValidationSummary(true)
+            @Html.ValidationSummary()
             <div class="form-group">
-                @Html.LabelFor(m => m.Login, new { @for = "inputEmail3", @class = "col-sm-2 control-label" })
+                @Html.LabelFor(m => m.Login, new { @for = "exampleInputEmail1" }) 
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(m => m.Login, new { htmlAttributes = new { @class = "form-control", @id = "inputEmail3", @placeholder = "Usuario" } })
+                    @Html.TextBoxFor(m => m.Login, new { @class = "form-control", @id = "inputEmail3", @placeholder = "Usuario ..." } )
+                </div>
+            <div class="form-group">
+                @Html.Label("Password", new { @for = "inputPassword3", @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.PasswordFor(m => m.password, new { @class = "form-control", @id = "inputPassword3", @placeholder = "Password" } )
                 </div>
             </div>
             <div class="form-group">
-                @Html.Label("Password", htmlAttributes: new { @for = "inputPassword3", @class = "col-sm-2 control-label" })
+                @Html.Label("Tipo de Usuario", new { @for = "inputPassword3", @class = "col-sm-2 control-label" })
                 <div class="col-sm-10">
-                    @Html.PasswordFor(m => m.password, new { htmlAttribute = new { @class = "form-control", @id = "inputPassword3", @placeholder = "Password" } })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.Label("Tipo de Usuario", htmlAttributes: new { @for = "inputPassword3", @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EnumDropDownListFor(x => x.TipoUsuario, new { htmlAttribute = new { @class = "form-control", @id = "inputPassword3", @placeholder = "Password" } })
+                    @Html.EnumDropDownListFor(x => x.TipoUsuario, new { @class = "form-control", @id = "inputPassword3", @placeholder = "Password" } )
                 </div>
             </div>
 

@@ -1,0 +1,15 @@
+﻿@*@model ExcellProtecaoVeicular.Model.Entity.UploadImages*@
+
+
+@*@using (Html.BeginForm(null,null,FormMethod.Post, new { enctype = "multipart/form-data",@id= "imageform" })){
+    <input class="form-control" type="file" name="photos[]" id="photoimg" accept="image/jpg" multiple />
+    
+        <tr><td><input type="submit" name="Submit" value="upload"/></td></tr>
+        <tr><td><div id='imageloadstatus' style='display:none'><img Name="Tela" src="loader.gif" alt="A carregar ..." /></div></td></tr>
+    
+
+}*@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/vendor/jquery.ui.widget.js"></script>
+<script src="js/jquery.iframe-transport.js"></script>
+<script src="js/jquery.fileupload.js"></script>

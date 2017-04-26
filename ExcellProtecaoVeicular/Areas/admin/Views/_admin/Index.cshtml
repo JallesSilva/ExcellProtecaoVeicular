@@ -5,9 +5,14 @@
 
 @if (HttpContext.Current.User.Identity.IsAuthenticated)
 {
-    <h3>Seja Bem Vindo - Painel Administrador <br/></h3>
-    <p>Usuario - @HttpContext.Current.User.Identity.Name</p>  
-    
+        <div class="row"></div>
+       <div class="panel panel-default">
+        <div class="panel-heading"> Seja Bem Vindo - Painel Administrador </div>
+        <div class="panel-body">
+            <p>Usuario - @HttpContext.Current.User.Identity.Name.ToUpper()</p>
+        </div>
+    </div>
+
 }
 
 

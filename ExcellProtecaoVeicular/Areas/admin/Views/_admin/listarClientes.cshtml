@@ -1,16 +1,24 @@
-﻿@model IEnumerable<ExcellProtecaoVeicular.Model.Clientes>
+﻿@model IEnumerable<ExcellProtecaoVeicular.Model.Entity.Clientes>
 
 @{
     ViewBag.Title = "Listar Clientes";
 }
 
-<h2>listarClientes - Quantidade de Clientes @Model.Count()</h2>
+<div id="divexcluir"></div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>        
+<h2>Lista de Clientes Cadastrados - Quantidade de Clientes @Model.Count()</h2>
+<div class="form-group row">
+    <div class="col-md-6">
+        <input type="text" id="txtBusca" placeholder="Digite aqui um valor para filtrar..." class="form-control" />
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-default" aria-label="Left Align" style="margin-right:10%" id="reload" value="Atualizar Pagina">
+            Atualizar <span class="glyphicon glyphicon-repeat"></span>
+        </button>
+    </div>
+</div>
+<table class="table" style="margin-top:10px">
+    <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
@@ -28,35 +36,56 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
-        </th>        
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>        
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cpf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataNasci)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cnh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDCliente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDCliente }) |
-            @Html.ActionLink("Delete", "deletarClientes", new { id=item.IDCliente })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr id="row-@item.IDCliente">
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNasci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cnh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDCliente }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IDCliente }) |
+                @*@Html.ActionLink("Deletar", "deletarClientes",new { id=item.IDCliente},new { @class = "excluir"})*@
+                <input type="submit" class="btn btn-default btn-xs" id="@item.IDCliente" name="@item.Nome" value="Excluir"/>
+            </td>
+        </tr>
+    }
 </table>
+
+@Html.Partial("SectionModalExcluir")
+<script type="text/javascript">
+    $(function () {
+        $("#reload").click(function () {
+            location.reload();
+        });
+
+        //$("#txtBusca").keyup(function(){
+        //    var texto = $(this).val();
+        //    $("#listItens td").css("visibility", "hidden");
+        //    $("#listItens td").each(function () {
+        //        if($(this).text().indexOf(texto) < 0)
+        //            $(this).css("display", "table-cell");
+
+
+        //});
+    });
+
+</script>
