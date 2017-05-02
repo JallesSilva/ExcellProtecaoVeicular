@@ -1,0 +1,48 @@
+﻿@model ExcellProtecaoVeicular.Model.Entity.ListDadosImages
+
+@{
+    ViewBag.Title = "DetalhesDoCliente";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetalhesDoCliente</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Clientes.Nome)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(model => model.Cliente.Nome);
+        </td>
+    </tr>
+
+@*@foreach (var item in Model) {*@
+    @foreach (var item in Model.Imagens)
+    {
+    <tr>
+        <td>
+            
+        </td>
+        <td>
+            <img src="~/images/CarroDeClientes/@item.NameImage.ToString()" />
+            @*<img src="~/images/CarroDeClientes/@item.NameImage.ToString()" />*@
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.
+            @Html.ActionLink("Details", "Details", new { id=item.Clientes.IDCliente }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Clientes.IDCliente })*@
+        </td>
+    </tr>
+}
+
+</table>

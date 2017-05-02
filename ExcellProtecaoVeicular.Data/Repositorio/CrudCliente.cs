@@ -101,17 +101,13 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
                 throw new Exception("Não foi possível gravar os dados do telefone do cliente.");
             }
         }
-       
-
-     
-        //Alteracao
         //Listar
         public List<Clientes> listarClientes()
         {            
             var listar = enty.Clientes.AsEnumerable().OrderBy(c=> c.Nome);
             return listar.ToList();
         }
-
+        //Cadastrar Dados dos Clientes
         public void CadastrarDados(ClienteViewModel DadosViewModel)
         {   
             
@@ -124,40 +120,90 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             enty.Dispose();
             
         }
-
+        // Deletar Cliente
         public Clientes deletarCliente(int id)
         {
+            try
+            {
                 Clientes cliente = enty.Clientes.First(c => c.IDCliente == id);
                 Telefone telefone = enty.Telefone.First(c => c.IDTelefone == cliente.FK_Telefone);
                 Endereco endereco = enty.Endereco.First(c => c.IDEndereco == cliente.FK_Endereco);
                 IQueryable<Veiculos> veiculos = enty.Veiculos.Where(c => c.FK_Clientes == cliente.IDCliente);
                 IQueryable<Beneficios> beneficios = enty.Beneficios.Where(c => c.FK_Cliente == cliente.IDCliente);
+                enty = new _EntyContext();
+                enty.Endereco.Attach(endereco);
+                enty.Entry(endereco).State = EntityState.Deleted;
                 enty.Endereco.Remove(endereco);
+                enty.Telefone.Attach(telefone);
+                enty.Entry(telefone).State = EntityState.Deleted;
                 enty.Telefone.Remove(telefone);
-
-                string strDiretorio = Path.Combine("~/App_Data/Imagens/" + cliente.IDCliente);
+                //string strDiretorio = Path.Combine("~/App_Data/Imagens/" + cliente.IDCliente);
 
                 foreach (var veiculo in veiculos)
                 {
+                    enty.Veiculos.Attach(veiculo);
+                    enty.Entry(veiculo).State = EntityState.Deleted;
                     enty.Veiculos.Remove(veiculo);
-
                 }
                 foreach (var beneficio in beneficios)
                 {
-
+                    enty.Beneficios.Attach(beneficio);
+                    enty.Entry(beneficio).State = EntityState.Deleted;
                     enty.Beneficios.Remove(beneficio);
+                    enty.Clientes.Attach(cliente);
+                    enty.Entry(cliente).State = EntityState.Deleted;
                     enty.Clientes.Remove(cliente);
                     enty.SaveChanges();
                 }
-                if (File.Exists(strDiretorio))
-                {
-                    File.Delete(strDiretorio);
-                }
-                else
-                    enty.SaveChanges();
-                    enty.Dispose(); 
-                    return cliente; 
+                //if (File.Exists(strDiretorio))
+                //{
+                //    File.Delete(strDiretorio);
+                //}
+                //else
+                enty.SaveChanges();
+                return cliente;
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+            finally
+            {
+                enty.Dispose();
+            }
+               
         }
+        public void GravarDadosImagens(string nomeDaImagem)
+        {
+            enty = new _EntyContext();
+            try
+            {
+                Image image = new Image();
+                image.NameImage = nomeDaImagem;
+                image.FK_Clientes = RelacionamentoDados.IDCliente;
+                enty.Imagens.Add(image);
+                enty.SaveChanges();
+                enty.Dispose();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Erro");
+            }
+            
+        }
+        public ListDadosImages DetalhesCliente(int id)
+        {
+            ListDadosImages listDadosImagens = new ListDadosImages();
+            enty = new _EntyContext();
+            listDadosImagens.Cliente = enty.Clientes.First(m => m.IDCliente == id);
+            listDadosImagens.Imagens = (from list in enty.Imagens
+                                       where list.FK_Clientes == id
+                                       select list).ToList();
+            enty.Dispose();
+            return listDadosImagens;
+        }
+       
     }
 }

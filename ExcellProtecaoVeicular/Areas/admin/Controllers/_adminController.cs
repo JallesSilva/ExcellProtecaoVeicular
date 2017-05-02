@@ -3,8 +3,7 @@ using ExcellProtecaoVeicular.Data.Repositorio;
 using ExcellProtecaoVeicular.Model.Entity;
 using System.Web.Mvc;
 using System;
-using System.Net;
-using System.Security.AccessControl;
+using System.Collections.Generic;
 
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 {
@@ -28,45 +27,47 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
         [HttpPost]
         public ActionResult cadastrarClientes(ClienteViewModel cadastrar)
         {
-            //crudcliente = new CrudCliente();
-            //crudcliente.CadastrarDados(cadastrar);
-            int count = 0;
-
-            try
+            if (ModelState.IsValid)
             {
-                foreach (string fileName in Request.Files)
+                crudcliente = new CrudCliente();
+                crudcliente.CadastrarDados(cadastrar); // Cadastrar dados do cliente
+                int count = 0; // Contador para a imagem.
+                               // Verifica se gerou o id do cliente para colocarmos no nome da imagem.
+                if (RelacionamentoDados.IDCliente != 0 || RelacionamentoDados.IDCliente <= 0)
                 {
-                    count++;
-                    var  file = Request.Files[fileName];
-                    var extensao = Path.GetExtension(file.FileName);
-                    var fileNames = Path.GetFileName("IMG" + RelacionamentoDados.IDCliente+count +extensao);
-                    var strCaminhoDiretorio = "~/App_Data/Imagens/" + RelacionamentoDados.IDCliente;
-                    var path = Path.Combine(Server.MapPath(strCaminhoDiretorio), fileNames);
-                    //DirectoryInfo directory = new DirectoryInfo(strCaminhoDiretorio);
-                    if (Directory.Exists(strCaminhoDiretorio))
-                    {   
-                        file.SaveAs(path);
-                    }
-                    else
+                    try
                     {
-                        var request = FtpWebRequest.Create(string.Format("ftp.excellprotecaoveicular.com.br/{0}", RelacionamentoDados.IDCliente));
-                        request.Method = WebRequestMethods.Ftp.MakeDirectory;
-                        request.Credentials = new NetworkCredential("excellprotecaoveicular.com.br", "131126Japa@");                        
-                        file.SaveAs(path);
+                        foreach (string fileName in Request.Files)
+                        {
+                            
+                            var file = Request.Files[count];
+                            var extensao = Path.GetExtension(file.FileName);
+                            var NovoNomeImagem = Path.GetFileName("IMG" + RelacionamentoDados.IDCliente + count + extensao);
+                            crudcliente.GravarDadosImagens(NovoNomeImagem);
+                            var strCaminhoDiretorio = "~/images/CarroDeClientes";
+                            var path = Path.Combine(Server.MapPath(strCaminhoDiretorio), NovoNomeImagem);
+                            file.SaveAs(path);
+                            count++;
+                        }
+                        ModelState.Clear();
+                        return View();
+
                     }
-                    
+                    catch (Exception)
+                    {
+                        TempData["ImagemError"] = "Erro ao salvar os dados, contate o administrador.";
+                        return View();
+                    }
                 }
+                else
+                    TempData["ImagemError"] = "Não foi possível salvar a imagem";
 
                 return View();
             }
-                catch (Exception ex)
-            {
-                
-                throw new Exception("Error ao salvar as imagens" + ex.Message + " " + ex.InnerException);
-            }
+            else
+                TempData["DadosIncompletos"] = "Dados incompletos, por favor verificar.";
+                return View();
 
-            
-            
         }
 
         [Authorize]
@@ -78,25 +79,26 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
             return View(lista);
 
         }
-
         [Authorize]
         [HttpPost]
         public JsonResult deletarClientes(int IDCliente)
         {
             CrudCliente exclusao = new CrudCliente();
             Clientes cliente = exclusao.deletarCliente(IDCliente);
-            return Json(string.Format("Cliente excluido com sucesso! Nome: {0} Número de identificação: {1}",cliente.Nome,cliente.IDCliente,JsonRequestBehavior.AllowGet));
+            return Json(string.Format("Cliente excluido com sucesso! Nome: {0} Número de identificação: {1}", cliente.Nome, cliente.IDCliente, JsonRequestBehavior.AllowGet));
         }
-
-
-
         [Authorize]
         public ActionResult UploadImagem()
         {
-            
+
             return PartialView();
         }
-
-        
+        [Authorize]
+        public ActionResult DetalhesDoCliente(int id)
+        {   
+            crudcliente = new CrudCliente();
+            var dadosImagens = crudcliente.DetalhesCliente(id);
+            return View(dadosImagens);
+        }
     }
 }

@@ -183,6 +183,7 @@
     <Content Include="Areas\admin\Views\_admin\UploadImagem.cshtml" />
     <Content Include="Areas\admin\Views\_admin\Teste.cshtml" />
     <Content Include="Areas\admin\Views\_admin\SectionModalExcluir.cshtml" />
+    <Content Include="Areas\admin\Views\_admin\DetalhesDoCliente.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\24horas.png" />
     <Content Include="images\bg-map.png" />
@@ -253,6 +254,10 @@
     <Compile Include="Migrations\201704261245150_History4.Designer.cs">
       <DependentUpon>201704261245150_History4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704301240040_HistoryMigration5.cs" />
+    <Compile Include="Migrations\201704301240040_HistoryMigration5.Designer.cs">
+      <DependentUpon>201704301240040_HistoryMigration5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -293,6 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\documents\" />
+    <Folder Include="App_Data\Imagens\CarroDeClientes\" />
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -311,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704261245150_History4.resx">
       <DependentUpon>201704261245150_History4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704301240040_HistoryMigration5.resx">
+      <DependentUpon>201704301240040_HistoryMigration5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

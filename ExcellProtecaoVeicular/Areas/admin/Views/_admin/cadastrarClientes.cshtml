@@ -156,23 +156,23 @@
         }
 
     @{
-        if(TempData["Mensagem"]!=null)
+        if(TempData["DadosIncompletos"] !=null)
         {
 
             <div class="page-header">
                 <h1>Alerta</h1>
             </div>
-            <div class="alert alert-success" role="alert">
-                <strong>Informação: </strong>@TempData["Mensagem"]
+            <div class="alert alert-warning" role="alert">
+                <strong>Informação: </strong>@TempData["DadosIncompletos"]
             </div>
         }
-        else if (TempData["Mensagem de Erro"] != null)
+        else if (TempData["ImagemError"] != null)
         {
             <div class="page-header">
                 <h1>Alerta</h1>
             </div>
             <div class="alert alert-warning" role="alert">
-                <strong>Atenção: </strong>@TempData["Mensagem de Erro"]
+                <strong>Atenção: </strong>@TempData["ImagemError"]
             </div>
         }
     }

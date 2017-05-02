@@ -11,6 +11,7 @@ namespace ExcellProtecaoVeicular.Data.Context
         public DbSet<Telefone> Telefone { get; set; }
         public DbSet<Veiculos> Veiculos { get; set; }
         public DbSet<Beneficios> Beneficios { get; set; }
+        public DbSet<Image> Imagens { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
