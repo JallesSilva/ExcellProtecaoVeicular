@@ -5,7 +5,11 @@
 }
 
 <div id="divexcluir"></div>
-
+@if(Model ==null)
+{
+    @TempData["Mensagem"]
+}
+else { 
 <h2>Lista de Clientes Cadastrados - Quantidade de Clientes @Model.Count()</h2>
 <div class="form-group row">
     <div class="col-md-6">
@@ -69,7 +73,7 @@
         </tr>
     }
 </table>
-
+}
 @Html.Partial("SectionModalExcluir")
 <script type="text/javascript">
     $(function () {

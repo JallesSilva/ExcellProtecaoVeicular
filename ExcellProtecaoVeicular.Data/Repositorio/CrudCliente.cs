@@ -15,11 +15,6 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
     public class CrudCliente : ICrudCliente
     {
         _EntyContext enty = null;
-        
-         public CrudCliente()
-        {
-            enty = new _EntyContext();            
-        }
         //Cadastrar
         private void CadastrarCliente(Clientes clientes)
         {  
@@ -49,9 +44,6 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
                 veiculos.FK_Clientes = RelacionamentoDados.IDCliente;
                 enty.Veiculos.Add(veiculos);
                 enty.SaveChanges();
-                //enty.Veiculos.Attach(veiculos);
-                //enty.Entry(veiculos).State = EntityState.Modified;
-                //enty.SaveChanges();
             }
             catch (Exception)
             {  throw new Exception("Não foi possível gravar os dados do Veiculo do cliente");       }
@@ -103,14 +95,29 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
         }
         //Listar
         public List<Clientes> listarClientes()
-        {            
-            var listar = enty.Clientes.AsEnumerable().OrderBy(c=> c.Nome);
-            return listar.ToList();
+        {   
+            try
+            {
+                enty = new _EntyContext();
+                var listar = enty.Clientes.AsEnumerable().OrderBy(c => c.Nome);
+                if(listar.Count() == 0)
+                {
+                    return null;
+                }
+                else
+                return listar.ToList();
+                enty.Dispose();
+            }
+            catch (NullReferenceException)
+            {
+                return null;
+            }
+            
         }
         //Cadastrar Dados dos Clientes
         public void CadastrarDados(ClienteViewModel DadosViewModel)
-        {   
-            
+        {
+            enty = new _EntyContext();
             RelacionamentoDados.FKTelefone = CadastrarTelefone(DadosViewModel.Telefone);
             RelacionamentoDados.FKEndereco = CadastrarEndereco(DadosViewModel.Endereco);
             DadosViewModel.Clientes.Cpf = DadosViewModel.Clientes.Cpf.Replace("-", "").Replace(".", "");            
@@ -118,50 +125,44 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             CadastarVeiculos(DadosViewModel.Veiculos);
             CadastrarBeneficios(DadosViewModel.Beneficios);
             enty.Dispose();
-            
         }
         // Deletar Cliente
         public Clientes deletarCliente(int id)
         {
             try
             {
+                enty = new _EntyContext();
                 Clientes cliente = enty.Clientes.First(c => c.IDCliente == id);
                 Telefone telefone = enty.Telefone.First(c => c.IDTelefone == cliente.FK_Telefone);
                 Endereco endereco = enty.Endereco.First(c => c.IDEndereco == cliente.FK_Endereco);
                 IQueryable<Veiculos> veiculos = enty.Veiculos.Where(c => c.FK_Clientes == cliente.IDCliente);
                 IQueryable<Beneficios> beneficios = enty.Beneficios.Where(c => c.FK_Cliente == cliente.IDCliente);
+                IQueryable<Image> images = enty.Imagens.Where(c => c.FK_Clientes == cliente.IDCliente);
                 enty = new _EntyContext();
-                enty.Endereco.Attach(endereco);
-                enty.Entry(endereco).State = EntityState.Deleted;
-                enty.Endereco.Remove(endereco);
-                enty.Telefone.Attach(telefone);
-                enty.Entry(telefone).State = EntityState.Deleted;
-                enty.Telefone.Remove(telefone);
-                //string strDiretorio = Path.Combine("~/App_Data/Imagens/" + cliente.IDCliente);
-
-                foreach (var veiculo in veiculos)
-                {
-                    enty.Veiculos.Attach(veiculo);
-                    enty.Entry(veiculo).State = EntityState.Deleted;
-                    enty.Veiculos.Remove(veiculo);
-                }
                 foreach (var beneficio in beneficios)
                 {
                     enty.Beneficios.Attach(beneficio);
-                    enty.Entry(beneficio).State = EntityState.Deleted;
                     enty.Beneficios.Remove(beneficio);
-                    enty.Clientes.Attach(cliente);
-                    enty.Entry(cliente).State = EntityState.Deleted;
-                    enty.Clientes.Remove(cliente);
-                    enty.SaveChanges();
                 }
-                //if (File.Exists(strDiretorio))
-                //{
-                //    File.Delete(strDiretorio);
-                //}
-                //else
-                enty.SaveChanges();
-                return cliente;
+                foreach (var veiculo in veiculos)
+                {
+                    enty.Veiculos.Attach(veiculo);
+                    enty.Veiculos.Remove(veiculo);
+                }
+                foreach (var image in images)
+                {
+                    enty.Imagens.Attach(image);
+                    enty.Imagens.Remove(image);
+                }
+                    enty.Clientes.Attach(cliente);
+                    enty.Clientes.Remove(cliente);
+                    enty.Endereco.Attach(endereco);
+                    enty.Endereco.Remove(endereco);
+                    enty.Telefone.Attach(telefone);
+                    enty.Telefone.Remove(telefone);
+                    enty.SaveChanges();
+                    enty.Dispose();
+                    return cliente;
             }
             catch (Exception)
             {
@@ -170,7 +171,7 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             }
             finally
             {
-                enty.Dispose();
+                enty.Dispose();                
             }
                
         }

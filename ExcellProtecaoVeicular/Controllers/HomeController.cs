@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using ExcellProtecaoVeicular.Data.Repositorio;
 using ExcellProtecaoVeicular.Model.Entity;
+using ExcellProtecaoVeicular.Model.Enum;
 
 namespace ExcellProtecaoVeicular.Web.Controllers
 {
@@ -47,7 +48,7 @@ namespace ExcellProtecaoVeicular.Web.Controllers
                 try
                 {
                     HomeRepositorio repositorio = new HomeRepositorio();
-                    repositorio.SetEmail("SemPath", "brendon.genssinger@gmail.com", "Site - Excell Proteção Veicular.", _objEmail);
+                    repositorio.SetEmail("SemPath", "excellprotecaoveicular@hotmail.com", "Site - Excell Proteção Veicular.", _objEmail,EnumTipoUsuario.Cliente,null);
                     TempData["MensagemSucesso"] = "Envio realizado com sucesso, em breve nossos consultores entrará em contato.";
                     _objEmail = null;
                     Dispose(true);

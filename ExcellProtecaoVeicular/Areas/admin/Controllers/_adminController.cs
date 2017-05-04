@@ -4,7 +4,7 @@ using ExcellProtecaoVeicular.Model.Entity;
 using System.Web.Mvc;
 using System;
 using System.Collections.Generic;
-
+using ExcellProtecaoVeicular.Model.Enum;
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 {
     public class _adminController : Controller
@@ -27,6 +27,7 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
         [HttpPost]
         public ActionResult cadastrarClientes(ClienteViewModel cadastrar)
         {
+            HomeRepositorio repositorioEnviarEmail = new HomeRepositorio();
             if (ModelState.IsValid)
             {
                 crudcliente = new CrudCliente();
@@ -49,6 +50,7 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
                             file.SaveAs(path);
                             count++;
                         }
+                        repositorioEnviarEmail.SetEmail("Nada", cadastrar.Clientes.Email, "Excell Protecao Veicular", null, EnumTipoUsuario.Administrador, cadastrar.Clientes);
                         ModelState.Clear();
                         return View();
 
@@ -75,6 +77,11 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
         {
             crudcliente = new CrudCliente();
             var lista = crudcliente.listarClientes();
+            if (lista ==null)
+            {
+                TempData["Mensagem"] = "Nenhum cliente encontrado";
+                return RedirectToAction("PageError");
+            }
             Dispose(true);
             return View(lista);
 
@@ -99,6 +106,12 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
             crudcliente = new CrudCliente();
             var dadosImagens = crudcliente.DetalhesCliente(id);
             return View(dadosImagens);
+        }
+
+        [Authorize]
+        public ActionResult PageError()
+        {
+            return View();
         }
     }
 }

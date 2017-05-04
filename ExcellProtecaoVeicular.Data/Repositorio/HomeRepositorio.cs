@@ -2,23 +2,41 @@
 using System.Net;
 using System;
 using ExcellProtecaoVeicular.Model.Entity;
+using ExcellProtecaoVeicular.Model.Enum;
 
 namespace ExcellProtecaoVeicular.Data.Repositorio
 {
     public class HomeRepositorio
     {
 
-        public bool SetEmail(string ViewPath, string emailTO, string Subject, _Email email)
+        public bool SetEmail(string ViewPath, string emailTO, string Subject, _Email email, EnumTipoUsuario tipoUser,Clientes cliente )
         {
-
+            string body=" ";
+            
+            switch (tipoUser)
+            {
+                case EnumTipoUsuario.Cliente: // Cliente envia o e-mail para a base da excell proteção veicular.
+                    body = "<h3><b>Nome do Cliente :</b> {0}</h3><p></p><br/><h3><b>Telefone :</b>{1}</h3> 	<p></p><br/><h3><b>Email :</b>{2}</h3>     <p></p><br/>  <h3><b>Messagem :</b>{3}</h3> 	<p></p>";
+                    break;
+                case EnumTipoUsuario.Administrador: // Após cadastrar o usuário, enviaremos um e-mail a eles.
+                    body = @"<h3>A Excell Protecao veicular<h3><br/>
+                              <p> Olá " + cliente.Nome + ", acabamos de cadastrar os seus dados em nossa base de dados.<br/>" +
+                              "Criamos a sua conta, o seu usuário é " + cliente.Cpf + "e a sua senha " + cliente.Cpf+"</p>";
+                    break;
+                default:
+                    break;
+            }
             //var body = "<h3><b>Nome do Cliente :</b></h3><p>{0}</p><br/><h3><b>Telefone :</b></h3> 	<p>{1}</p><br/><h3><b>Email :</b></h3>     <p>{2}</p><br/>  <h3><b>Messagem :</b></h3> 	<p>{3}</p>";
-            var body = "<h3><b>Nome do Cliente :</b> {0}</h3><p></p><br/><h3><b>Telefone :</b>{1}</h3> 	<p></p><br/><h3><b>Email :</b>{2}</h3>     <p></p><br/>  <h3><b>Messagem :</b>{3}</h3> 	<p></p>";
+            
             var mail = new MailMessage();
             mail.To.Add(emailTO);//("excell-contabil@excellprotecaoveicular.com.br"); // para quem vai o e-mail
             mail.From = new MailAddress("excell-contabil@excellprotecaoveicular.com.br"); // De onde vem o e-mail
             mail.Subject = Subject; // Titulo do E-mail
-            //mail.Body = string.Format(body, email.Nome, email.Telefone, email.Email, email.Mensagem); // Corpo da mensagem
-            mail.Body = string.Format(body,email.Nome,email.Telefone,email.Email,email.Mensagem); // Corpo da mensagem
+            // Corpo da mensagem
+            if(EnumTipoUsuario.Cliente == tipoUser)
+            mail.Body = string.Format(body.Trim(),email.Nome,email.Telefone,email.Email,email.Mensagem); // Corpo da mensagem
+            else if(EnumTipoUsuario.Administrador == tipoUser)
+            mail.Body = body; // Corpo da mensagem
             mail.IsBodyHtml = true; // Transformando a mensagem em html
             var smtp = new SmtpClient();
             //smtp.Port = 587;            

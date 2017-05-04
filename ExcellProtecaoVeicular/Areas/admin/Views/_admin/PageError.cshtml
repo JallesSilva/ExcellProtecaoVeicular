@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "PageError";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@if(@TempData["Mensagem"] != null) { 
+    <div class="alert alert-danger" role="alert" style="text-align:center">
+       <strong>Mensagem: </strong><br /><h3 style="text-align:center">@TempData["Mensagem"]</h3><br />
+    </div>
+}
+else
+{
+    <div style="margin-top: 17%; margin-left: 50%; height: 100px;">
+        <strong><h3>Sem Dados para mostrar</h3></strong>
+    </div>
+}
+
+
+
