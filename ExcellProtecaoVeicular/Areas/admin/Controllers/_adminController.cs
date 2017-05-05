@@ -50,7 +50,8 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
                             file.SaveAs(path);
                             count++;
                         }
-                        repositorioEnviarEmail.SetEmail("Nada", cadastrar.Clientes.Email, "Excell Protecao Veicular", null, EnumTipoUsuario.Administrador, cadastrar.Clientes);
+                        repositorioEnviarEmail.SetEmail(
+                            "Nada", cadastrar.Clientes.Email, "Excell Protecao Veicular", null, EnumTipoUsuario.Administrador, cadastrar.Clientes);
                         ModelState.Clear();
                         return View();
 
