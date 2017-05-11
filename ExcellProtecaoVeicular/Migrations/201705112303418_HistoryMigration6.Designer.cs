@@ -7,13 +7,13 @@ namespace ExcellProtecaoVeicular.Web.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class HistoryMigration3 : IMigrationMetadata
+    public sealed partial class HistoryMigration6 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(HistoryMigration3));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(HistoryMigration6));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704261144173_HistoryMigration3"; }
+            get { return "201705112303418_HistoryMigration6"; }
         }
         
         string IMigrationMetadata.Source

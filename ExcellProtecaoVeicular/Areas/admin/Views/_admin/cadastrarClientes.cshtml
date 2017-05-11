@@ -103,6 +103,10 @@
                 <div class="panel-heading">
                     <div class="panel-body">
                         <div class="form-group row">
+                            @Html.LabelFor(end => end.Veiculos.EnumTipoDeVeiculos, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:7.333333%%" })
+                            <div class="col-md-2">
+                                @Html.EnumDropDownListFor(end => end.Veiculos.EnumTipoDeVeiculos,"Tipo De Veiculos", new { @class = "form-control" })
+                            </div>
                             @Html.LabelFor(end => end.Veiculos.Marca, new { @class = "control-label col-md-1", @style = "padding-top:5px;width:7.333333%%" })
                             <div class="col-md-2">
                                 @Html.TextBoxFor(end => end.Veiculos.Marca, new { @class = "form-control" })
@@ -125,17 +129,30 @@
                 </legend>
                 <div class="panel-heading">
                     <div class="panel-body">
-                        @Html.LabelFor(b => b.Beneficios.Horas_Veiculos, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
+                       @* @Html.LabelFor(b => b.Beneficios.Horas_Veiculos, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
                         <div class="col-md-2">
                             @Html.CheckBoxFor(b => b.Beneficios.Horas_Veiculos, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
-                        </div>
-                        @Html.LabelFor(b => b.Beneficios.HorasAgregados, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
+                        </div>*@
+                        @*Html.LabelFor(b => b.Beneficios.HorasAgregados, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
                         <div class="col-md-2">
-                            @Html.CheckBoxFor(b => b.Beneficios.HorasAgregados, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
-                        </div>
+                           @Html.CheckBoxFor(b => b.Beneficios.HorasAgregados, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
+                        </div>*@
                         @Html.LabelFor(b => b.Beneficios.Vidros, new { @class = "control-label col-md-1", @style = "width: 4.333333%;padding-top:5px;" })
                         <div class="col-md-2">
                             @Html.CheckBoxFor(b => b.Beneficios.Vidros, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
+                        </div>
+                        @Html.LabelFor(b => b.Beneficios.CarroReserva, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
+                        <div class="col-md-2">
+                            @Html.CheckBoxFor(b => b.Beneficios.CarroReserva, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
+                        </div>
+                        @Html.Label("Dias de Carro Reserva", new { @class = "control-label col-md-1", @style = "width: 8.333333%;" })
+                        <div class="col-md-2" style="margin-left:3%;padding-top:10px;">
+                            @Html.EnumDropDownListFor(m=> m.Beneficios.EnumDias,"Selecionar os dias",new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.0;paddin-top:5px;" })
+                        </div>
+                        <div class="row"></div>
+                        @Html.Label("Fundo para Terceiros", new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
+                        <div class="col-md-2">
+                            @Html.CheckBoxFor(m => m.Beneficios.FundoParaTerceiros ,new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
                         </div>
                     </div>
                 </div>

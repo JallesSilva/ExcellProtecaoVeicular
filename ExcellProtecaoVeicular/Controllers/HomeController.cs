@@ -50,7 +50,7 @@ namespace ExcellProtecaoVeicular.Web.Controllers
                     HomeRepositorio repositorio = new HomeRepositorio();
                     repositorio.SetEmail("SemPath", "excellprotecaoveicular@hotmail.com", "Site - Excell Proteção Veicular.", _objEmail,EnumTipoUsuario.Cliente,null);
                     TempData["MensagemSucesso"] = "Envio realizado com sucesso, em breve nossos consultores entrará em contato.";
-                    _objEmail = null;
+                    //_objEmail = null;
                     Dispose(true);
                     //ModelState.Clear();
                     return Redirect("/Home/#contact");

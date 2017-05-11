@@ -7,6 +7,6 @@ namespace ExcellProtecaoVeicular.Model.Enum
 {
     public enum EnumDias
     {
-       SeteDias=7,QuinzeDias=15,TrintaDias=30
+       Setes=7,Quinze=15,Trinta=30
     }
 }

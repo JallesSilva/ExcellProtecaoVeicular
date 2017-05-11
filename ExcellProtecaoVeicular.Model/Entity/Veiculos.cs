@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ExcellProtecaoVeicular.Model.Enum;
 namespace ExcellProtecaoVeicular.Model.Entity
 {
     public class Veiculos
@@ -17,6 +18,8 @@ namespace ExcellProtecaoVeicular.Model.Entity
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Placa { get; set; }
+        [Display(Name ="Tipo de Veiculos")]
+        public EnumTiposDeVeiculos EnumTipoDeVeiculos { get; set; }
 
 
     }

@@ -247,10 +247,6 @@
     <Compile Include="Migrations\201703130354494_HistoryMigration2.Designer.cs">
       <DependentUpon>201703130354494_HistoryMigration2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704261144173_HistoryMigration3.cs" />
-    <Compile Include="Migrations\201704261144173_HistoryMigration3.Designer.cs">
-      <DependentUpon>201704261144173_HistoryMigration3.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201704261245150_History4.cs" />
     <Compile Include="Migrations\201704261245150_History4.Designer.cs">
       <DependentUpon>201704261245150_History4.cs</DependentUpon>
@@ -258,6 +254,10 @@
     <Compile Include="Migrations\201704301240040_HistoryMigration5.cs" />
     <Compile Include="Migrations\201704301240040_HistoryMigration5.Designer.cs">
       <DependentUpon>201704301240040_HistoryMigration5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705112303418_HistoryMigration6.cs" />
+    <Compile Include="Migrations\201705112303418_HistoryMigration6.Designer.cs">
+      <DependentUpon>201705112303418_HistoryMigration6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -313,14 +313,14 @@
     <EmbeddedResource Include="Migrations\201703130354494_HistoryMigration2.resx">
       <DependentUpon>201703130354494_HistoryMigration2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704261144173_HistoryMigration3.resx">
-      <DependentUpon>201704261144173_HistoryMigration3.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704261245150_History4.resx">
       <DependentUpon>201704261245150_History4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704301240040_HistoryMigration5.resx">
       <DependentUpon>201704301240040_HistoryMigration5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705112303418_HistoryMigration6.resx">
+      <DependentUpon>201705112303418_HistoryMigration6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

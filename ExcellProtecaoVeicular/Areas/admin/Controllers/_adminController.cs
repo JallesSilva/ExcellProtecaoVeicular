@@ -19,7 +19,7 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 
         [Authorize]
         public ActionResult cadastrarClientes()
-        {
+        {   
             return View();
         }
 
