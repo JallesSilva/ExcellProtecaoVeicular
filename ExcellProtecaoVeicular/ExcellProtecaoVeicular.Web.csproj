@@ -259,6 +259,10 @@
     <Compile Include="Migrations\201705112303418_HistoryMigration6.Designer.cs">
       <DependentUpon>201705112303418_HistoryMigration6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705142224292_HistoryMigration7.cs" />
+    <Compile Include="Migrations\201705142224292_HistoryMigration7.Designer.cs">
+      <DependentUpon>201705142224292_HistoryMigration7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -321,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705112303418_HistoryMigration6.resx">
       <DependentUpon>201705112303418_HistoryMigration6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705142224292_HistoryMigration7.resx">
+      <DependentUpon>201705142224292_HistoryMigration7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -137,20 +137,20 @@
                         <div class="col-md-2">
                            @Html.CheckBoxFor(b => b.Beneficios.HorasAgregados, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
                         </div>*@
-                        @Html.LabelFor(b => b.Beneficios.Vidros, new { @class = "control-label col-md-1", @style = "width: 4.333333%;padding-top:5px;" })
-                        <div class="col-md-2">
+                        @Html.LabelFor(b => b.Beneficios.Vidros, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
+                        <div class="col-md-1">
                             @Html.CheckBoxFor(b => b.Beneficios.Vidros, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
                         </div>
-                        @Html.LabelFor(b => b.Beneficios.CarroReserva, new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
-                        <div class="col-md-2">
-                            @Html.CheckBoxFor(b => b.Beneficios.CarroReserva, new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
+                        @Html.LabelFor(b => b.Beneficios.CarroReserva, new { @class = "control-label col-md-1", @style = "width: 13.333333%;padding-top:5px;" })
+                        <div class="col-md-1">
+                            @Html.CheckBoxFor(b => b.Beneficios.CarroReserva, new { @class = "custom-control-input", @style = "margin-left: -4%;zoom: 1.6;" })
                         </div>
-                        @Html.Label("Dias de Carro Reserva", new { @class = "control-label col-md-1", @style = "width: 8.333333%;" })
-                        <div class="col-md-2" style="margin-left:3%;padding-top:10px;">
-                            @Html.EnumDropDownListFor(m=> m.Beneficios.EnumDias,"Selecionar os dias",new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.0;paddin-top:5px;" })
+                        @Html.Label("Dias de Carro Reserva", new { @class = "control-label col-md-1", @style = "width: 17.333333%;margin-left:-3%;padding-top:5px;" })
+                        <div class="col-md-2" style="margin-left:3%;">
+                            @Html.EnumDropDownListFor(m=> m.Beneficios.EnumDias,"Selecionar os dias",new { @class = "custom-control-input", @style = "margin-left: -30%;zoom: 1.0;padding-top:5px;", @id= "inputPassword3" })
                         </div>
                         <div class="row"></div>
-                        @Html.Label("Fundo para Terceiros", new { @class = "control-label col-md-1", @style = "width: 10.333333%;padding-top:5px;" })
+                        @Html.Label("Fundo para Terceiros", new { @class = "control-label col-md-1", @style = "width: 16.333333%;padding-top:5px;" })
                         <div class="col-md-2">
                             @Html.CheckBoxFor(m => m.Beneficios.FundoParaTerceiros ,new { @class = "custom-control-input", @style = "margin-left: 9%;zoom: 1.6;" })
                         </div>
@@ -172,8 +172,10 @@
         <input value="Salvar" id="btnCli" type="submit" name="Salvar Cliente" />
         }
 
+    
     @{
-        if(TempData["DadosIncompletos"] !=null)
+        <div id="mensagem"></div>
+        if (TempData["DadosIncompletos"] != null)
         {
 
             <div class="page-header">

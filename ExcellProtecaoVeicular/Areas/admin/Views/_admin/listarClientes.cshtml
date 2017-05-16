@@ -65,8 +65,8 @@ else {
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td class="text-center">
-                @Html.ActionLink("Edit", "Edit", new { id = item.IDCliente }) |
-                @Html.ActionLink("Details", "DetalhesDoCliente", new { id = item.IDCliente }) |
+                @Html.ActionLink("Editar", "Edit", new { id = item.IDCliente }) |
+                @Html.ActionLink("Detalhes", "DetalhesDoCliente", new { id = item.IDCliente }) |
                 @*@Html.ActionLink("Deletar", "deletarClientes",new { id=item.IDCliente},new { @class = "excluir"})*@
                 <input type="submit" class="btn btn-default btn-xs" id="@item.IDCliente" name="@item.Nome" value="Excluir"/>
             </td>

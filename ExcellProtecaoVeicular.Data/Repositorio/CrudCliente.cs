@@ -194,14 +194,18 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             }
             
         }
-        public ListDadosImages DetalhesCliente(int id)
+        public ListDadosImagesViewModel DetalhesCliente(int id)
         {
-            ListDadosImages listDadosImagens = new ListDadosImages();
+            ListDadosImagesViewModel listDadosImagens = new ListDadosImagesViewModel();
             enty = new _EntyContext();
             listDadosImagens.Cliente = enty.Clientes.First(m => m.IDCliente == id);
             listDadosImagens.Imagens = (from list in enty.Imagens
                                        where list.FK_Clientes == id
                                        select list).ToList();
+            listDadosImagens.Beneficios = enty.Beneficios.First(m => m.FK_Cliente == id);
+            listDadosImagens.Veiculos = enty.Veiculos.First(m => m.FK_Clientes == id);
+            listDadosImagens.Endereco = enty.Endereco.First(m => m.IDEndereco == listDadosImagens.Cliente.FK_Endereco);
+            listDadosImagens.Telefone = enty.Telefone.First(m => m.IDTelefone == listDadosImagens.Cliente.FK_Telefone);
             enty.Dispose();
             return listDadosImagens;
         }

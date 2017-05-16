@@ -1,21 +1,25 @@
-﻿@model ExcellProtecaoVeicular.Model.Entity.ListDadosImages
+﻿@model ExcellProtecaoVeicular.Model.Entity.ListDadosImagesViewModel
 
 @{
     ViewBag.Title = "Detalhes Do Cliente ";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
-
-
-<h4>Detalhes Do Cliente: @Model.Cliente.Nome.ToString()</h4><p>Código do Cliente - @Model.Cliente.IDCliente</p>
-
-<p>
-    @Html.ActionLink("Incluir Novo Cliente", "cadastrarClientes")
-</p>
-<p>
-    @Html.ActionLink("Listar Clientes", "listarClientes")
-</p>
-@foreach (var item in Model.Imagens)
-{  
-    <img src="~/images/CarroDeClientes/@item.NameImage.ToString()" class="img-thumbnail"/>
-}
+<div class="container">
+    <h4>Nome Do Cliente: @Model.Cliente.Nome.ToString()</h4><p>Código do Cliente - @Model.Cliente.IDCliente</p><br />
+    <h4>Endereço:</h4> <label>@Model.Endereco.Rua @Model.Endereco.Quadra @Model.Endereco.Lote @Model.Endereco.Bairro @Model.Endereco.Cidade</label>
+    <h4>Telefones:</h4> <label>Casa: @Model.Telefone.Tel_Casa</label> <label>Celular: @Model.Telefone.Tel_Celular</label> <label>Recado @Model.Telefone.Tel_Recado</label>
+</div>
+<div class="container">
+    <h4>Veiculo</h4><label>Marca: @Model.Veiculos.Marca Modelo:@Model.Veiculos.Modelo Placa: @Model.Veiculos.Placa</label>
+    <div><h4>Tipo do Veiculo:</h4><label>@Model.Veiculos.EnumTipoDeVeiculos.ToString().ToUpper()</label></div>
+    <div class="row"></div>
+    
+    @foreach (var item in Model.Imagens)
+    {
+        <div class="col-md-6">
+            <img src="~/images/CarroDeClientes/@item.NameImage.ToString()" class="img-rounded" width="404" height="236" /> <br />
+           @Html.ActionLink("Excluir Imagem","", new { id = item.ID})
+        </div>
+    }
+</div>
 

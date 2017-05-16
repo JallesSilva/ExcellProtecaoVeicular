@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Image.cs" />
-    <Compile Include="Entity\ListDadosImages.cs" />
+    <Compile Include="Entity\ListDadosImagesViewModel.cs" />
     <Compile Include="Entity\RelacionamentoDados.cs" />
     <Compile Include="Enum\EnumClientes.cs" />
     <Compile Include="Enum\EnumDias.cs" />
