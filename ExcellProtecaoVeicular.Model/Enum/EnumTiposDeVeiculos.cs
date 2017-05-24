@@ -8,9 +8,9 @@ namespace ExcellProtecaoVeicular.Model.Enum
 {
    public enum EnumTiposDeVeiculos
     {
-        carro = 1,
-        moto = 2,
-        caminhão = 3,
-        onibus = 4        
+        Carro = 1,
+        Moto = 2,
+        Caminhão = 3,
+        Onibus = 4        
     }
 }

@@ -14,7 +14,7 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
 {
     public class CrudCliente : ICrudCliente
     {
-        _EntyContext enty = null;
+       private _EntyContext enty = null;
         //Cadastrar
         private void CadastrarCliente(Clientes clientes)
         {  
@@ -54,7 +54,7 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
         { 
             try
             {   
-                enty.Endereco.Add(endereco);
+                enty.Enderecos.Add(endereco);
                 enty.SaveChanges();
                 return (int)endereco.IDEndereco; 
             }
@@ -83,7 +83,7 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
         {  
             try
             {
-                enty.Telefone.Add(telefone);
+                enty.Telefones.Add(telefone);
                 enty.SaveChanges();
                 return telefone.IDTelefone;
             }
@@ -133,8 +133,8 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
             {
                 enty = new _EntyContext();
                 Clientes cliente = enty.Clientes.First(c => c.IDCliente == id);
-                Telefone telefone = enty.Telefone.First(c => c.IDTelefone == cliente.FK_Telefone);
-                Endereco endereco = enty.Endereco.First(c => c.IDEndereco == cliente.FK_Endereco);
+                Telefone telefone = enty.Telefones.First(c => c.IDTelefone == cliente.FK_Telefone);
+                Endereco endereco = enty.Enderecos.First(c => c.IDEndereco == cliente.FK_Endereco);
                 IQueryable<Veiculos> veiculos = enty.Veiculos.Where(c => c.FK_Clientes == cliente.IDCliente);
                 IQueryable<Beneficios> beneficios = enty.Beneficios.Where(c => c.FK_Cliente == cliente.IDCliente);
                 IQueryable<Image> images = enty.Imagens.Where(c => c.FK_Clientes == cliente.IDCliente);
@@ -156,10 +156,10 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
                 }
                     enty.Clientes.Attach(cliente);
                     enty.Clientes.Remove(cliente);
-                    enty.Endereco.Attach(endereco);
-                    enty.Endereco.Remove(endereco);
-                    enty.Telefone.Attach(telefone);
-                    enty.Telefone.Remove(telefone);
+                    enty.Enderecos.Attach(endereco);
+                    enty.Enderecos.Remove(endereco);
+                    enty.Telefones.Attach(telefone);
+                    enty.Telefones.Remove(telefone);
                     enty.SaveChanges();
                     enty.Dispose();
                     return cliente;
@@ -204,8 +204,8 @@ namespace ExcellProtecaoVeicular.Data.Repositorio
                                        select list).ToList();
             listDadosImagens.Beneficios = enty.Beneficios.First(m => m.FK_Cliente == id);
             listDadosImagens.Veiculos = enty.Veiculos.First(m => m.FK_Clientes == id);
-            listDadosImagens.Endereco = enty.Endereco.First(m => m.IDEndereco == listDadosImagens.Cliente.FK_Endereco);
-            listDadosImagens.Telefone = enty.Telefone.First(m => m.IDTelefone == listDadosImagens.Cliente.FK_Telefone);
+            listDadosImagens.Endereco = enty.Enderecos.First(m => m.IDEndereco == listDadosImagens.Cliente.FK_Endereco);
+            listDadosImagens.Telefone = enty.Telefones.First(m => m.IDTelefone == listDadosImagens.Cliente.FK_Telefone);
             enty.Dispose();
             return listDadosImagens;
         }
