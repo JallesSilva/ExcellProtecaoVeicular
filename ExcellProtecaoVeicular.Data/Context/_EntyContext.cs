@@ -7,8 +7,8 @@ namespace ExcellProtecaoVeicular.Data.Context
     {
         public DbSet<Usuarios> Usuarios { get; set; }        
         public DbSet<Clientes> Clientes { get; set; }
-        public DbSet<Endereco> Endereco { get; set; }
-        public DbSet<Telefone> Telefone { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Telefone> Telefones { get; set; }
         public DbSet<Veiculos> Veiculos { get; set; }
         public DbSet<Beneficios> Beneficios { get; set; }
         public DbSet<Image> Imagens { get; set; }
