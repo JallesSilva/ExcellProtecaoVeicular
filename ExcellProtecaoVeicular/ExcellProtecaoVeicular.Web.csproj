@@ -170,9 +170,11 @@
     <Content Include="Areas\admin\Views\_admin\listarClientes.cshtml" />
     <Content Include="Areas\admin\Views\_admin\UploadImagem.cshtml" />
     <Content Include="Areas\admin\Views\_admin\Teste.cshtml" />
-    <Content Include="Areas\admin\Views\_admin\SectionModalExcluir.cshtml" />
+    <Content Include="Areas\admin\Views\_admin\Sections\SectionModalExcluir.cshtml" />
     <Content Include="Areas\admin\Views\_admin\DetalhesDoCliente.cshtml" />
     <Content Include="Areas\admin\Views\_admin\PageError.cshtml" />
+    <Content Include="Areas\Clientes\Views\web.config" />
+    <Content Include="Areas\admin\Views\_admin\Sections\SectionSalvarImagens.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\24horas.png" />
     <Content Include="images\bg-map.png" />
@@ -226,6 +228,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\_adminController.cs" />
+    <Compile Include="Areas\Clientes\ClientesAreaRegistration.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Migrations\201705241805167_Migration_1.cs" />
@@ -275,6 +278,9 @@
     <Folder Include="App_Data\documents\" />
     <Folder Include="App_Data\Imagens\CarroDeClientes\" />
     <Folder Include="Areas\admin\Models\" />
+    <Folder Include="Areas\Clientes\Controllers\" />
+    <Folder Include="Areas\Clientes\Models\" />
+    <Folder Include="Areas\Clientes\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

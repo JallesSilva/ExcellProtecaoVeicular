@@ -47,23 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Image.cs" />
-    <Compile Include="Entity\ListDadosImagesViewModel.cs" />
-    <Compile Include="Entity\RelacionamentoDados.cs" />
+    <Compile Include="Model\Image.cs" />
+    <Compile Include="ViewModel\ListDadosImagesViewModel.cs" />
+    <Compile Include="Class_Static\RelacionamentoDados.cs" />
     <Compile Include="Enum\EnumClientes.cs" />
     <Compile Include="Enum\EnumDias.cs" />
     <Compile Include="Enum\EnumFundo.cs" />
     <Compile Include="Enum\EnumTiposDeVeiculos.cs" />
     <Compile Include="Enum\EnumTipoUsuario.cs" />
     <Compile Include="Enum\EnumUF.cs" />
-    <Compile Include="Entity\Beneficios.cs" />
-    <Compile Include="Entity\Clientes.cs" />
-    <Compile Include="Entity\ClienteViewModel.cs" />
-    <Compile Include="Entity\Endereco.cs" />
-    <Compile Include="Entity\Telefone.cs" />
-    <Compile Include="Entity\Usuarios.cs" />
-    <Compile Include="Entity\Veiculos.cs" />
-    <Compile Include="Entity\_Email.cs" />
+    <Compile Include="Model\Beneficios.cs" />
+    <Compile Include="Model\Clientes.cs" />
+    <Compile Include="ViewModel\ClienteViewModel.cs" />
+    <Compile Include="Model\Endereco.cs" />
+    <Compile Include="Model\Telefone.cs" />
+    <Compile Include="Model\Usuarios.cs" />
+    <Compile Include="Model\Veiculos.cs" />
+    <Compile Include="Model\Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

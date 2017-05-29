@@ -6,7 +6,31 @@
 }
 
 <div class="container">
+    @{
+        <div id="mensagem"></div>
+        if (TempData["DadosIncompletos"] != null)
+        {
+
+            <div class="page-header">
+                <h1>Alerta</h1>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                <strong>Informação: </strong>@TempData["DadosIncompletos"]
+            </div>
+        }
+        else if (TempData["ImagemError"] != null)
+        {
+            <div class="page-header">
+                <h1>Alerta</h1>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                <strong>Atenção: </strong>@TempData["ImagemError"]
+            </div>
+        }
+    }
+
     <div class="row" style="padding: 1px;"></div>
+
             @using (Html.BeginForm("", "", new { controller = "Administrador", action = "cadastrarClientes" }, FormMethod.Post,new { enctype = "multipart/form-data" }))
             {
                             @Html.ValidationSummary()
@@ -173,27 +197,5 @@
         }
 
     
-    @{
-        <div id="mensagem"></div>
-        if (TempData["DadosIncompletos"] != null)
-        {
-
-            <div class="page-header">
-                <h1>Alerta</h1>
-            </div>
-            <div class="alert alert-warning" role="alert">
-                <strong>Informação: </strong>@TempData["DadosIncompletos"]
-            </div>
-        }
-        else if (TempData["ImagemError"] != null)
-        {
-            <div class="page-header">
-                <h1>Alerta</h1>
-            </div>
-            <div class="alert alert-warning" role="alert">
-                <strong>Atenção: </strong>@TempData["ImagemError"]
-            </div>
-        }
-    }
-
+    
     </div>

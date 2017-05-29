@@ -12,14 +12,26 @@
 <div class="container">
     <h4>Veiculo</h4><label>Marca: @Model.Veiculos.Marca Modelo:@Model.Veiculos.Modelo Placa: @Model.Veiculos.Placa</label>
     <div><h4>Tipo do Veiculo:</h4><label>@Model.Veiculos.EnumTipoDeVeiculos.ToString().ToUpper()</label></div>
+ @{ Html.RenderPartial(
+  "~/Areas/admin/Views/_admin/Sections/SectionSalvarImagens.cshtml");}
     <div class="row"></div>
     
     @foreach (var item in Model.Imagens)
     {
+        @if (item.NameImage.IsEmpty())
+        {
+            <div class="container">
+                <div class="col-md-10">
+                    <p>Nenhuma Imagem Foi carregada.</p>
+                    @Html.ActionLink("Adicionar Imagem","",new { id = item.ID})
+                </div>
+            </div>    
+        }
         <div class="col-md-6">
             <img src="~/images/CarroDeClientes/@item.NameImage.ToString()" class="img-rounded" width="404" height="236" /> <br />
            @Html.ActionLink("Excluir Imagem","", new { id = item.ID})
         </div>
     }
+
 </div>
 
