@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-namespace ExcellProtecaoVeicular.Model.Entity
+namespace ExcellProtecaoVeicular.Model.Model
 {
     public class Clientes
     {

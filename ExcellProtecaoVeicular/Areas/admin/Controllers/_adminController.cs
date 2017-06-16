@@ -1,10 +1,14 @@
 ﻿using System.IO;
+using ExcellProtecaoVeicular.Data.Repositorio.Administrador;
+using ExcellProtecaoVeicular.Model.ViewModel;
 using ExcellProtecaoVeicular.Data.Repositorio;
-using ExcellProtecaoVeicular.Model.Entity;
+using ExcellProtecaoVeicular.Model.Enum;
 using System.Web.Mvc;
 using System;
 using System.Collections.Generic;
-using ExcellProtecaoVeicular.Model.Enum;
+using ExcellProtecaoVeicular.Model.Model.Class_Static;
+
+
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
 {
     public class _adminController : Controller
@@ -74,7 +78,7 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
         }
 
         [Authorize]
-        public ActionResult listarClientes(Clientes listar)
+        public ActionResult listarClientes(ExcellProtecaoVeicular.Model.Model.Clientes listar)
         {
             crudcliente = new CrudCliente();
             var lista = crudcliente.listarClientes();
@@ -92,7 +96,7 @@ namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers
         public JsonResult deletarClientes(int IDCliente)
         {
             CrudCliente exclusao = new CrudCliente();
-            Clientes cliente = exclusao.deletarCliente(IDCliente);
+            ExcellProtecaoVeicular.Model.Model.Clientes cliente = exclusao.deletarCliente(IDCliente);
             return Json(string.Format("Cliente excluido com sucesso! Nome: {0} Número de identificação: {1}", cliente.Nome, cliente.IDCliente, JsonRequestBehavior.AllowGet));
         }
         [Authorize]

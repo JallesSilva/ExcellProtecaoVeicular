@@ -17,8 +17,8 @@ namespace ExcellProtecaoVeicular.Web.Areas.Clientes
             context.MapRoute(
                 "Clientes_default",
                 "Clientes/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                new { action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "ExcellProtecaoVeicular.Web.Areas.Clientes.Controllers" });
+
         }
     }
 }

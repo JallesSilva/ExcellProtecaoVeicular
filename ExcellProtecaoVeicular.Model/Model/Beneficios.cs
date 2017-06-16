@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using ExcellProtecaoVeicular.Model.Enum;
 
-namespace ExcellProtecaoVeicular.Model.Entity
+namespace ExcellProtecaoVeicular.Model.Model
 {
     public class Beneficios
     {

@@ -1,16 +1,16 @@
-﻿using System;
-using System.Data.Entity;
-using ExcellProtecaoVeicular.Model.Entity;
+﻿using ExcellProtecaoVeicular.Data.Context;
+using ExcellProtecaoVeicular.Data.Repositorio.Administrador.IRepositorio;
+using ExcellProtecaoVeicular.Model.Model;
+using ExcellProtecaoVeicular.Model.Model.Class_Static;
+using ExcellProtecaoVeicular.Model.ViewModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data;
-using ExcellProtecaoVeicular.Data.Context;
-using ExcellProtecaoVeicular.Data.Repositorio.IRepositorio;
-using System.Web;
-using System.IO;
+using System.Data.Entity;
+using System.Linq;
 
 
-namespace ExcellProtecaoVeicular.Data.Repositorio
+namespace ExcellProtecaoVeicular.Data.Repositorio.Administrador
 {
     public class CrudCliente : ICrudCliente
     {

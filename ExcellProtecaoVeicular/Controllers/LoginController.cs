@@ -1,4 +1,4 @@
-﻿using ExcellProtecaoVeicular.Model.Entity;
+﻿using ExcellProtecaoVeicular.Model.Model;
 using ExcellProtecaoVeicular.Data.Context;
 using System.Web.Mvc;
 using System.Web.Security;

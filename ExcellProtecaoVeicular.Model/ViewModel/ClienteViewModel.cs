@@ -1,5 +1,6 @@
 ﻿using System.Web;
-namespace ExcellProtecaoVeicular.Model.Entity
+using ExcellProtecaoVeicular.Model.Model;
+namespace ExcellProtecaoVeicular.Model.ViewModel
 {
     public class ClienteViewModel
     {

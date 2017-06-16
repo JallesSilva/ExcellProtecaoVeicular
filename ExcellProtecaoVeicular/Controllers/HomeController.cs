@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using ExcellProtecaoVeicular.Data.Repositorio;
-using ExcellProtecaoVeicular.Model.Entity;
+using ExcellProtecaoVeicular.Model.Model;
 using ExcellProtecaoVeicular.Model.Enum;
 
 namespace ExcellProtecaoVeicular.Web.Controllers

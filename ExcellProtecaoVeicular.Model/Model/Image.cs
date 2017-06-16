@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections;
-using System.Collections.Generic;
 
-namespace ExcellProtecaoVeicular.Model.Entity
+namespace ExcellProtecaoVeicular.Model.Model
 {
     public class Image
     {

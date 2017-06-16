@@ -63,7 +63,7 @@
     <Compile Include="Model\Telefone.cs" />
     <Compile Include="Model\Usuarios.cs" />
     <Compile Include="Model\Veiculos.cs" />
-    <Compile Include="Model\Email.cs" />
+    <Compile Include="Model\_Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

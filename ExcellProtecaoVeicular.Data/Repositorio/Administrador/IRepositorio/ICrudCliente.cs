@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ExcellProtecaoVeicular.Model.Entity;
+using ExcellProtecaoVeicular.Model.Model;
 using System.Web;
-
-namespace ExcellProtecaoVeicular.Data.Repositorio.IRepositorio
+using ExcellProtecaoVeicular.Model.ViewModel;
+namespace ExcellProtecaoVeicular.Data.Repositorio.Administrador.IRepositorio
 {
     public interface ICrudCliente
     {

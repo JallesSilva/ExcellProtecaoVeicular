@@ -1,7 +1,7 @@
 ﻿using ExcellProtecaoVeicular.Data.Context;
 using System.Linq;
 using System;
-using ExcellProtecaoVeicular.Model.Entity;
+using ExcellProtecaoVeicular.Model.Model;
 using ExcellProtecaoVeicular.Model.Enum;
 namespace ExcellProtecaoVeicular.Data.Repositorio
 {

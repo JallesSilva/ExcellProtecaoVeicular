@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace ExcellProtecaoVeicular.Model.Entity
+using ExcellProtecaoVeicular.Model.Model;
+namespace ExcellProtecaoVeicular.Model.ViewModel
 {
     public class ListDadosImagesViewModel
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ExcellProtecaoVeicular.Model.Entity
+namespace ExcellProtecaoVeicular.Model.Model
 {
     public class _Email
     {
