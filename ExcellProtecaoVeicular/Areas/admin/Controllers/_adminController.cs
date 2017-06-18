@@ -6,7 +6,7 @@ using ExcellProtecaoVeicular.Model.Enum;
 using System.Web.Mvc;
 using System;
 using System.Collections.Generic;
-using ExcellProtecaoVeicular.Model.Model.Class_Static;
+using ExcellProtecaoVeicular.Model.Class_Static;
 
 
 namespace ExcellProtecaoVeicular.Web.Areas.admin.Controllers

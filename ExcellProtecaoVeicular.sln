@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcellProtecaoVeicular.Web", "ExcellProtecaoVeicular\ExcellProtecaoVeicular.Web.csproj", "{893D463D-FB02-41E8-833E-8B54701AA3E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{72A5EDA1-775B-418C-BCA5-CEE24634A0FC} = {72A5EDA1-775B-418C-BCA5-CEE24634A0FC}
+		{FFC4FFFC-32F3-4FC4-AAC1-FF39E5480E94} = {FFC4FFFC-32F3-4FC4-AAC1-FF39E5480E94}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcellProtecaoVeicular.Model", "ExcellProtecaoVeicular.Model\ExcellProtecaoVeicular.Model.csproj", "{FFC4FFFC-32F3-4FC4-AAC1-FF39E5480E94}"
 EndProject

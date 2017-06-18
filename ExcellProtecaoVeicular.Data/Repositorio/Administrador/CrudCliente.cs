@@ -1,7 +1,7 @@
 ﻿using ExcellProtecaoVeicular.Data.Context;
 using ExcellProtecaoVeicular.Data.Repositorio.Administrador.IRepositorio;
 using ExcellProtecaoVeicular.Model.Model;
-using ExcellProtecaoVeicular.Model.Model.Class_Static;
+using ExcellProtecaoVeicular.Model.Class_Static;
 using ExcellProtecaoVeicular.Model.ViewModel;
 using System;
 using System.Collections.Generic;

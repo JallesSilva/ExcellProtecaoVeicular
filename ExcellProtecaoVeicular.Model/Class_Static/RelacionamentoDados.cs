@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExcellProtecaoVeicular.Model.Model.Class_Static
+namespace ExcellProtecaoVeicular.Model.Class_Static
 {
     public class RelacionamentoDados
     {
